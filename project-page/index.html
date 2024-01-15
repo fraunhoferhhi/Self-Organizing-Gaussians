@@ -86,7 +86,12 @@
                   >,</span
                 >
                 <span class="author-block">
+                  <a
+                    href="https://github.com/Florian-Barthel"
+                    target="_blank"
+                    >
                   Florian Barthel
+                  </a>
                   <sup><small>1,2</small></sup
                   >,</span
                 >
@@ -149,8 +154,8 @@
  -->
                   <!-- Arxiv PDF link -->
 
-<!--                        <span class="link-block">
-                        <a href="https://arxiv.org/pdf/<ARXIV PAPER ID>.pdf" target="_blank"
+                    <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2312.13299.pdf" target="_blank"
                         class="external-link button is-normal is-rounded is-dark is-disabled">
                         <span class="icon">
                           <i class="fas fa-file-pdf"></i>
@@ -158,7 +163,7 @@
                         <span>Paper</span>
                       </a>
                     </span>
- -->
+
                   <!-- Supplementary PDF link -->
 <!--                   <span class="link-block">
                     <a
@@ -208,10 +213,10 @@
     </section>
 
     <!-- Teaser video-->
-<!--     <section class="hero teaser">
+     <section class="hero teaser">
       <div class="container is-max-desktop">
         <div class="hero-body">
-          <video poster="" id="tree" autoplay controls muted loop height="100%">
+          <!--<video poster="" id="tree" autoplay controls muted loop height="100%">
             <source
               src="static/videos/x_maps_hand_demo_h264.mp4"
               type="video/mp4"
@@ -220,7 +225,8 @@
               src="static/videos/x_maps_hand_demo_vp9.webm"
               type="video/webm"
             />
-          </video>
+          </video>-->
+          <img style="display: block; margin-left: auto; margin-right: auto; width: 70%;", src="static/images/teaser.png" alt="MY ALT TEXT"/>
           <h2 class="subtitle has-text-centered">
 
           </h2>
@@ -229,7 +235,7 @@
         </div>
       </div>
     </section>
- -->    <!-- End teaser video -->
+    <!-- End teaser video -->
 
     <!-- Paper abstract -->
     <section class="section hero is-light">
@@ -240,6 +246,19 @@
             <div class="content has-text-justified">
               <p>
 3D Gaussian Splatting has recently emerged as a highly promising technique for modeling of static 3D scenes. In contrast to Neural Radiance Fields, it utilizes efficient rasterization allowing for very fast rendering at high-quality. However, the storage size is significantly higher, which hinders practical deployment, e.g.on resource constrained devices. In this paper, we introduce a compact scene representation organizing the parameters of 3D Gaussian Splatting (3DGS) into a 2D grid with local homogeneity, ensuring a drastic reduction in storage requirements without compromising visual quality during rendering. Central to our idea is the explicit exploitation of perceptual redundancies present in natural scenes. In essence, the inherent nature of a scene allows for numerous permutations of Gaussian parameters to equivalently represent it. To this end, we propose a novel highly parallel algorithm that regularly arranges the high-dimensional Gaussian parameters into a 2D grid while preserving their neighborhood structure. During training, we further enforce local smoothness between the sorted parameters in the grid. The uncompressed Gaussians use the same structure as 3DGS, ensuring a seamless integration with established renderers. Our method achieves a reduction factor of 8x to 26x in size for complex scenes with no increase in training time, marking a substantial leap forward in the domain of 3D scene distribution and consumption.
+              </p>
+            </div>
+            <h2 class="title is-3">Method</h2>
+            <div class="content has-text-justified">
+              <img src="static/images/method_overview2.png" alt="MY ALT TEXT"/>
+              <p>An overview of our novel 3DGS training method. During training, we arrange all high dimensional attributes into multiple 2D grids. Those grids are sorted and a smoothness regularization is applied. This creates redundancy which help to compress the 2D grids into small files using off-the-shelf compression methods.</p>
+            </div>
+            <h2 class="title is-3">Results</h2>
+            <div class="content has-text-justified">
+              <img src="static/images/compare.png" alt="MY ALT TEXT"/>
+              <p>
+                Our method maintains high rendering quality while only using a fraction of the memory footprint.
+
               </p>
             </div>
           </div>
@@ -347,15 +366,22 @@
  --><!--End paper poster -->
 
     <!--BibTex citation -->
-<!--     <section class="section" id="BibTeX">
+     <section class="section" id="BibTeX">
       <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
         <pre><code>
-
+          @misc{morgenstern2023compact,
+            title={Compact 3D Scene Representation via Self-Organizing Gaussian Grids}, 
+            author={Wieland Morgenstern and Florian Barthel and Anna Hilsmann and Peter Eisert},
+            year={2023},
+            eprint={2312.13299},
+            archivePrefix={arXiv},
+            primaryClass={cs.CV}
+      }
 </code></pre>
       </div>
     </section>
- -->    <!--End BibTex citation -->
+    <!--End BibTex citation -->
 
     <footer class="footer">
       <div class="container">
