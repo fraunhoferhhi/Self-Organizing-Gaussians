@@ -17,7 +17,7 @@
 
 This repository is a fork of the official authors implementation associated with the paper "3D Gaussian Splatting for Real-Time Radiance Field Rendering".
 
-The code for "Compact 3D Scene Representation via Self-Organizing Gaussian Grids" contains two parts: the sorting algorithm, PLAS, available under the Apache License at [fraunhoferhhi/PLAS](https://github.com/fraunhoferhhi/PLAS).
+The code for "Compact 3D Scene Representation via Self-Organizing Gaussian Grids" consists of multiple parts. The multi-dimensional sorting algorithm, PLAS, is available under the Apache License at [fraunhoferhhi/PLAS](https://github.com/fraunhoferhhi/PLAS).
 
 The integration of the sorting, the smoothness regularization and the compression code for training 3D scenes with the extended 3D Gaussian Splatting will become available in this repository.
 
