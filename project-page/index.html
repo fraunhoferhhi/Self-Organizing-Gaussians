@@ -2,469 +2,280 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="description"
-    content="Self-Organizing Gaussian Splats: A new approach to 3D scene representation and rendering, reducing data size significantly while preserving quality, developed by researchers at Fraunhofer Heinrich Hertz Institute HHI and Humboldt University of Berlin." />
-  <meta property="og:title" content="Self-Organizing Gaussian Splats: Efficient 3D Scene Representation" />
-  <meta property="og:description"
-    content="Introducing Self-Organizing Gaussian Splats for compact 3D scene representation. This method significantly reduces the data size needed for high-quality 3D rendering, ideal for applications on resource-constrained devices and fast web applications." />
-  <meta property="og:url" content="https://fraunhoferhhi.github.io/Self-Organizing-Gaussian-Splats/" />
-  <meta property="og:image" content="static/images/teaser_self_organizing_gaussian.jpeg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="675" />
+    <meta charset="utf-8"/>
+    <meta name="description" content="Self-Organizing Gaussian Splats: A new approach to 3D scene representation and rendering, reducing data size significantly while preserving quality, developed by researchers at Fraunhofer Heinrich Hertz Institute HHI and Humboldt University of Berlin."/>
+    <meta property="og:title" content="Self-Organizing Gaussian Splats: Efficient 3D Scene Representation"/>
+    <meta property="og:description" content="Introducing Self-Organizing Gaussian Splats for compact 3D scene representation. This method significantly reduces the data size needed for high-quality 3D rendering, ideal for applications on resource-constrained devices and fast web applications."/>
+    <meta property="og:url" content="https://fraunhoferhhi.github.io/Self-Organizing-Gaussian-Splats/"/>
+    <meta property="og:image" content="static/images/teaser_self_organizing_gaussian.jpeg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="675"/>
 
-  <meta name="twitter:title" content="Discover Self-Organizing Gaussian Splats for 3D Scene Representation" />
-  <meta name="twitter:description"
-    content="Learn about the novel Self-Organizing Gaussian Splats method, a groundbreaking approach in 3D scene rendering, offering high-quality visuals with reduced data size." />
-  <meta name="twitter:image" content="static/images/your_twitter_banner_image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Discover Self-Organizing Gaussian Splats for 3D Scene Representation"/>
+    <meta name="twitter:description" content="Learn about the novel Self-Organizing Gaussian Splats method, a groundbreaking approach in 3D scene rendering, offering high-quality visuals with reduced data size."/>
+    <meta name="twitter:image" content="static/images/your_twitter_banner_image.png"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="keywords" content="Self-Organizing Gaussian Splats, 3D scene representation, compact data size, high-quality rendering, Fraunhofer Heinrich Hertz Institute, Humboldt University of Berlin, resource-constrained devices, fast web applications"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <meta name="keywords"
-    content="Self-Organizing Gaussian Splats, 3D scene representation, compact data size, high-quality rendering, Fraunhofer Heinrich Hertz Institute, Humboldt University of Berlin, resource-constrained devices, fast web applications" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Self-Organizing Gaussian Splats Project Page</title>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"/>
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet"/>
 
-  <title>Self-Organizing Gaussian Splats Project Page</title>
-  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico" />
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+    <link rel="stylesheet" href="static/css/bulma.min.css"/>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css"/>
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css"/>
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"/>
+    <link rel="stylesheet" href="static/css/index.css"/>
+    <link rel="stylesheet" href="static/css/style.css"/>
 
-  <link rel="stylesheet" href="static/css/bulma.min.css" />
-  <link rel="stylesheet" href="static/css/bulma-carousel.min.css" />
-  <link rel="stylesheet" href="static/css/bulma-slider.min.css" />
-  <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
-  <link rel="stylesheet" href="static/css/index.css" />
-  <link rel="stylesheet" href="static/css/style.css" />
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
-  <script defer src="static/js/fontawesome.all.min.js"></script>
-  <script src="static/js/bulma-carousel.min.js"></script>
-  <script src="static/js/bulma-slider.min.js"></script>
-  <script src="static/js/index.js"></script>
-  <script src="static/js/vidsplit_multi.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script src="static/js/vidsplit_multi.js"></script>
 
 </head>
 
 <body>
-  <section class="hero">
+<section class="hero">
     <div class="hero-body">
-      <div class="container is-max-desktop">
-        <div class="columns is-centered">
-          <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">
-              Compact 3D Scene Representation via Self-Organizing Gaussian Grids
-            </h1>
-            <div class="is-size-5 publication-authors">
-              <!-- Paper authors -->
-              <span class="author-block">
-                <a href="https://www.hhi.fraunhofer.de/en/departments/vit/research-groups/computer-vision-graphics/team/morgenstern.html"
-                  target="_blank">Wieland Morgenstern</a><sup><small>1</small></sup>,</span>
-              <span class="author-block">
-                <a href="https://github.com/Florian-Barthel" target="_blank">
-                  Florian Barthel
-                </a>
-                <sup><small>1,2</small></sup>,</span>
-              <span class="author-block">
-                <a href="https://iphome.hhi.de/hilsmann/index.htm" target="_blank">Anna
-                  Hilsmann</a><sup><small>1</small></sup>,
-              </span>
-              <span class="author-block">
-                <a href="https://iphome.hhi.de/eisert/" target="_blank">Peter Eisert</a><sup><small>1,2</small></sup>
-              </span>
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">
+                        Compact 3D Scene Representation via Self-Organizing Gaussian Grids
+                    </h1>
+                    <div class="is-size-5 publication-authors">
+                        <!-- Paper authors -->
+                        <span class="author-block">
+								<a href="https://www.hhi.fraunhofer.de/en/departments/vit/research-groups/computer-vision-graphics/team/morgenstern.html"
+                                   target="_blank">Wieland Morgenstern</a><sup><small>1</small></sup>,</span>
+                        <span class="author-block">
+								<a href="https://florian-barthel.github.io/" target="_blank">
+									Florian Barthel
+								</a>
+								<sup><small>1,2</small></sup>,</span>
+                        <span class="author-block">
+								<a href="https://iphome.hhi.de/hilsmann/index.htm" target="_blank">Anna
+									Hilsmann</a><sup><small>1</small></sup>,
+							</span>
+                        <span class="author-block">
+								<a href="https://iphome.hhi.de/eisert/" target="_blank">Peter
+									Eisert</a><sup><small>1,2</small></sup>
+							</span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+							<span class="author-block">
+								<sup><small>1 </small></sup>Fraunhofer Heinrich Hertz
+								Institute, HHI <br/>
+								<sup><small>2 </small></sup>Humboldt University of Berlin
+								<br/>
+                                <!-- Conferance name and year -->
+							</span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <!-- LateXML rendering GitHub page -->
+
+                        <div class="publication-links">
+                            <!-- Arxiv PDF link -->
+                            <span class="link-block">
+									<a href="https://arxiv.org/pdf/2312.13299.pdf" target="_blank"
+                                       class="external-link button is-normal is-rounded is-dark is-disabled">
+										<span class="icon">
+											<i class="fas fa-file-pdf"></i>
+										</span>
+										<span>Paper</span>
+									</a>
+								</span>
+                            <!-- Github link -->
+                            <span class="link-block">
+									<a href="https://github.com/fraunhoferhhi/Self-Organizing-Gaussian-Splats"
+                                       target="_blank" class="external-link button is-normal is-rounded is-dark">
+										<span class="icon">
+											<i class="fab fa-github"></i>
+										</span>
+										<span>Code</span>
+									</a>
+								</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="is-size-5 publication-authors">
-              <span class="author-block">
-                <sup><small>1 </small></sup>Fraunhofer Heinrich Hertz
-                Institute, HHI <br />
-                <sup><small>2 </small></sup>Humboldt University of Berlin
-                <br />
-                <!-- Conferance name and year -->
-              </span>
-            </div>
-
-            <div class="column has-text-centered">
-              <!-- LateXML rendering GitHub page -->
-
-              <div class="publication-links">
-                <!--                   <span class="link-block">
-                    <a
-                      href=""
-                      target="_blank"
-                      class="external-link button is-normal is-rounded is-dark"
-                    >
-                      <span class="icon">
-                        <i class="fas fa-file-contract"></i>
-                      </span>
-                      <span>Paper (HTML)</span>
-                    </a>
-                  </span>
- -->
-                <!-- PDF link Workshop upload -->
-
-                <!--                   <span class="link-block">
-                    <a
-                      href=""
-                      target="_blank"
-                      class="external-link button is-normal is-rounded is-dark"
-                    >
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Paper (PDF)</span>
-                    </a>
-                  </span>
- -->
-                <!-- Arxiv PDF link -->
-
-                <span class="link-block">
-                  <a href="https://arxiv.org/pdf/2312.13299.pdf" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark is-disabled">
-                    <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                    </span>
-                    <span>Paper</span>
-                  </a>
-                </span>
-
-                <!-- Supplementary PDF link -->
-                <!--                   <span class="link-block">
-                    <a
-                      href=""
-                      target="_blank"
-                      class="external-link button is-normal is-rounded is-dark"
-                    >
-                      <span class="icon">
-                        <i class="fas fa-file-pdf"></i>
-                      </span>
-                      <span>Poster</span>
-                    </a>
-                  </span>
- -->
-                <!-- Github link -->
-                <span class="link-block">
-                  <a href="https://github.com/fraunhoferhhi/Self-Organizing-Gaussian-Splats" target="_blank"
-                    class="external-link button is-normal is-rounded is-dark">
-                    <span class="icon">
-                      <i class="fab fa-github"></i>
-                    </span>
-                    <span>Code</span>
-                  </a>
-                </span>
-
-                <!-- ArXiv abstract Link -->
-                <!-- 
-                <span class="link-block">
-                  <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                  class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                    <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
- -->
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-
-  <!-- Teaser video-->
-  <section class="hero teaser">
-    <div class="container is-max-desktop">
-      <div class="hero-body">
-        <!--<video poster="" id="tree" autoplay controls muted loop height="100%">
-            <source
-              src="static/videos/x_maps_hand_demo_h264.mp4"
-              type="video/mp4"
-            />
-            <source
-              src="static/videos/x_maps_hand_demo_vp9.webm"
-              type="video/webm"
-            />
-          </video>-->
-        <img style="display: block; margin-left: auto; margin-right: auto; width: 70%;" , src="static/images/teaser.png"
-          alt="MY ALT TEXT" />
-        <h2 class="subtitle has-text-centered">
-
-        </h2>
-        <p>
-        </p>
-      </div>
-    </div>
-  </section>
-  <!-- End teaser video -->
-
-  <section class="section hero is-light">
-    <div class="container is-max-desktop">
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          <h2 class="title is-3">Abstract</h2>
-          <div class="content has-text-justified">
-            <p>
-              3D Gaussian Splatting has recently emerged as a highly promising technique for modeling of static 3D
-              scenes. In contrast to Neural Radiance Fields, it utilizes efficient rasterization allowing for very fast
-              rendering at high-quality. However, the storage size is significantly higher, which hinders practical
-              deployment, e.g.on resource constrained devices. In this paper, we introduce a compact scene
-              representation organizing the parameters of 3D Gaussian Splatting (3DGS) into a 2D grid with local
-              homogeneity, ensuring a drastic reduction in storage requirements without compromising visual quality
-              during rendering. Central to our idea is the explicit exploitation of perceptual redundancies present in
-              natural scenes. In essence, the inherent nature of a scene allows for numerous permutations of Gaussian
-              parameters to equivalently represent it. To this end, we propose a novel highly parallel algorithm that
-              regularly arranges the high-dimensional Gaussian parameters into a 2D grid while preserving their
-              neighborhood structure. During training, we further enforce local smoothness between the sorted parameters
-              in the grid. The uncompressed Gaussians use the same structure as 3DGS, ensuring a seamless integration
-              with established renderers. Our method achieves a reduction factor of 8x to 26x in size for complex scenes
-              with no increase in training time, marking a substantial leap forward in the domain of 3D scene
-              distribution and consumption.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="hero is-small">
-    <div class="hero-body">
-      <div class="container">
-
-        <h2 class="title is-3">Method</h2>
-        <div class="content has-text-justified">
-          <img src="static/images/method_overview2.png" alt="MY ALT TEXT" />
-          <p>An overview of our novel 3DGS training method. During training, we arrange all high dimensional
-            attributes into multiple 2D grids. Those grids are sorted and a smoothness regularization is applied. This
-            creates redundancy which help to compress the 2D grids into small files using off-the-shelf compression
-            methods.</p>
-        </div>
-
-        <h2 class="title is-3">Results</h2>
-        <img style="display: block; margin-left: auto; margin-right: auto; width: 90%;" , src="static/images/table.png"
-        alt="MY ALT TEXT" />
-
-        <div class="content has-text-justified">
-          <table>
-            <tr>
-              <th style="text-align: left; width: 33.33%;">3DGS<span style="float: right;">Ours-Q</span></th>
-              <th style="text-align: left; width: 33.33%;">3DGS w/o SH<span style="float: right;">Ours-Q w/o SH</span></th>
-              <th style="text-align: left; width: 33.33%;">Ours-Q w/o SH<span style="float: right;">Ours-S w/o SH</span></th>
-            </tr>
-            
-            <tr>
-              <td>
-                <div class="video-container">
-                  <video class="sourceVideo" src="static/videos/flowers_3dgs_sh_vs_oursqsh.mp4" style="display: none;" muted
-                    loop></video>
-                  <canvas class="videoCanvas"></canvas>
-                </div>
-                <p style="text-align: left;">828.3 MB<span style="float: right;"> 64.1 MB</span></p>
-              </td>
-              <td>
-                <div class="video-container">
-                  <video class="sourceVideo" src="static/videos/flowers_3dgs_nosh_vs_oursq.mp4" style="display: none;" muted
-                    loop></video>
-                  <canvas class="videoCanvas"></canvas>
-                </div>
-                <p style="text-align: left;">227.4 MB<span style="float: right;">32.2 MB</span></p>
-              </td>
-              <td>
-                <div class="video-container">
-                  <video class="sourceVideo" src="static/videos/flowers_oursq_vs_ourss.mp4" style="display: none;" muted
-                    loop></video>
-                  <canvas class="videoCanvas"></canvas>
-                </div>
-                <p style="text-align: left;">32.2 MB<span style="float: right;">23.6 MB</span></p>
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                <div class="video-container">
-                  <video class="sourceVideo" src="static/videos/truck_3dgs_sh_vs_oursqsh.mp4" style="display: none;" muted
-                    loop></video>
-                  <canvas class="videoCanvas"></canvas>
-                </div>
-                <p style="text-align: left;">624.7 MB<span style="float: right;">34.3 MB</span></p>
-              </td>
-              <td>
-                <div class="video-container">
-                  <video class="sourceVideo" src="static/videos/truck_3dgs_nosh_vs_oursq.mp4" style="display: none;" muted
-                    loop></video>
-                  <canvas class="videoCanvas"></canvas>
-                </div>
-                <p style="text-align: left;">169.9 MB<span style="float: right;">17.3 MB</span></p>
-              </td>
-              <td>
-                <div class="video-container">
-                  <video class="sourceVideo" src="static/videos/truck_oursq_vs_ourss.mp4" style="display: none;" muted
-                    loop></video>
-                  <canvas class="videoCanvas"></canvas>
-                </div>
-                <p style="text-align: left;">17.3 MB<span style="float: right;">13.9 MB</span></p>
-              </td>
-            </tr>
-          </table>
-
- 
-
-
-
-
-
-          <!--<img src="static/images/compare.png" alt="MY ALT TEXT" />-->
-          <p>
-            Our method maintains high rendering quality while only using a fraction of the memory footprint.
-
-          </p>
-        </div>
-      </div>
-    </div>
-
-  </section>
-  <!-- End paper abstract -->
-
-  <!-- Image carousel -->
-
-  <!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <div id="results-carousel" class="carousel results-carousel">
-       <div class="item">
-        <img src="static/images/carousel1.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          First image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel2.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-          Second image description.
-        </h2>
-      </div>
-      <div class="item">
-        <img src="static/images/carousel3.jpg" alt="MY ALT TEXT"/>
-        <h2 class="subtitle has-text-centered">
-         Third image description.
-       </h2>
-     </div>
-     <div class="item">
-      <img src="static/images/carousel4.jpg" alt="MY ALT TEXT"/>
-      <h2 class="subtitle has-text-centered">
-        Fourth image description.
-      </h2>
-    </div>
-  </div>
-</div>
-</div>
-</section> -->
-  <!-- End image carousel -->
-
-  <!-- Youtube video -->
-  <!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Video Presentation</h2>
-      <div class="columns is-centered has-text-centered">
-        <div class="column is-four-fifths">
-          
-          <div class="publication-video">
-            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section> -->
-  <!-- End youtube video -->
-
-  <!-- Video carousel -->
-  <!-- <section class="hero is-small">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title is-3">Another Carousel</h2>
-      <div id="results-carousel" class="carousel results-carousel">
-        <div class="item item-video1">
-          <video poster="" id="video1" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel1.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video2">
-          <video poster="" id="video2" autoplay controls muted loop height="100%">
-            <source src="static/videos/carousel2.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-        <div class="item item-video3">
-          <video poster="" id="video3" autoplay controls muted loop height="100%">\
-            <source src="static/videos/carousel3.mp4"
-            type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
-  </div>
 </section>
- --><!-- End video carousel -->
 
-  <!-- Paper poster -->
-  <!-- <section class="hero is-small is-light">
-  <div class="hero-body">
-    <div class="container">
-      <h2 class="title">Poster</h2>
+<!-- Teaser video-->
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <img style="display: block; margin-left: auto; margin-right: auto; width: 70%;"
+                 src="static/images/teaser.png" alt="MY ALT TEXT"/>
+            <h2 class="subtitle has-text-centered">
 
-      <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
-          </iframe>
-        
-      </div>
-    </div>
-  </section>
- --><!--End paper poster -->
-
-  <!--BibTex citation -->
-  <section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
-      <h2 class="title">BibTeX</h2>
-      <pre><code>
-          @misc{morgenstern2023compact,
-            title={Compact 3D Scene Representation via Self-Organizing Gaussian Grids}, 
-            author={Wieland Morgenstern and Florian Barthel and Anna Hilsmann and Peter Eisert},
-            year={2023},
-            eprint={2312.13299},
-            archivePrefix={arXiv},
-            primaryClass={cs.CV}
-      }
-</code></pre>
-    </div>
-  </section>
-  <!--End BibTex citation -->
-
-  <footer class="footer">
-    <div class="container">
-      <div class="columns is-centered">
-        <div class="column is-8">
-          <div class="content">
+            </h2>
             <p>
-              This page was built using the
-              <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project
-                Page Template</a>. <br />
-              This website is licensed under a
-              <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons
-                Attribution-ShareAlike 4.0 International
-                License</a>.
             </p>
-          </div>
         </div>
-      </div>
     </div>
-  </footer>
+</section>
+<!-- End teaser video -->
 
-  <!-- Statcounter tracking code -->
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        3D Gaussian Splatting has recently emerged as a highly promising technique for modeling of static 3D
+                        scenes. In contrast to Neural Radiance Fields, it utilizes efficient rasterization allowing for very fast
+                        rendering at high-quality. However, the storage size is significantly higher, which hinders practical
+                        deployment, e.g.on resource constrained devices. In this paper, we introduce a compact scene
+                        representation organizing the parameters of 3D Gaussian Splatting (3DGS) into a 2D grid with local
+                        homogeneity, ensuring a drastic reduction in storage requirements without compromising visual quality
+                        during rendering. Central to our idea is the explicit exploitation of perceptual redundancies present in
+                        natural scenes. In essence, the inherent nature of a scene allows for numerous permutations of Gaussian
+                        parameters to equivalently represent it. To this end, we propose a novel highly parallel algorithm that
+                        regularly arranges the high-dimensional Gaussian parameters into a 2D grid while preserving their
+                        neighborhood structure. During training, we further enforce local smoothness between the sorted parameters
+                        in the grid. The uncompressed Gaussians use the same structure as 3DGS, ensuring a seamless integration
+                        with established renderers. Our method achieves a reduction factor of 8x to 26x in size for complex scenes
+                        with no increase in training time, marking a substantial leap forward in the domain of 3D scene
+                        distribution and consumption.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container">
 
-  <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+            <h2 class="title is-3">Method</h2>
+            <div class="content has-text-justified">
+                <img src="static/images/method.png" alt="MY ALT TEXT"/>
+                <p>
+                    An overview of our novel 3DGS training method. During training, we arrange all high dimensional
+                    attributes into multiple 2D grids. Those grids are sorted and a smoothness regularization is
+                    applied. This
+                    creates redundancy which help to compress the 2D grids into small files using off-the-shelf
+                    compression methods.
+                </p>
+            </div>
 
-  <!-- End of Statcounter Code -->
+            <h2 class="title is-3">Results</h2>
+            <div class="content has-text-justified">
+                <table>
+                    <tr>
+                        <th style="text-align: left; width: 50%;">3DGS<span style="float: right;">Ours</span>
+                        </th>
+                        <th style="text-align: left; width: 50%;">3DGS w/o SH<span style="float: right;">Ours
+									w/o SH</span>
+                        </th>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="video-container">
+                                <video class="sourceVideo" src="static/videos_eccv/truck_compare.mp4"
+                                       style="display: none;" muted loop></video>
+                                <canvas class="videoCanvas"></canvas>
+                            </div>
+                            <p style="text-align: left;">639.7 MB<span style="float: right;"> 28.8 MB</span></p>
+                        </td>
+                        <td>
+                            <div class="video-container">
+                                <video class="sourceVideo" src="static/videos_eccv/truck_compare_nosh.mp4"
+                                       style="display: none;" muted loop></video>
+                                <canvas class="videoCanvas"></canvas>
+                            </div>
+                            <p style="text-align: left;">174.0 MB<span style="float: right;">11.8 MB</span></p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <div class="video-container">
+                                <video class="sourceVideo" src="static/videos_eccv/flowers_compare.mp4"
+                                       style="display: none;" muted loop></video>
+                                <canvas class="videoCanvas"></canvas>
+                            </div>
+                            <p style="text-align: left;">848.1 MB<span style="float: right;">55.0 MB</span></p>
+                        </td>
+                        <td>
+                            <div class="video-container">
+                                <video class="sourceVideo" src="static/videos_eccv/flowers_compare_nosh.mp4"
+                                       style="display: none;" muted loop></video>
+                                <canvas class="videoCanvas"></canvas>
+                            </div>
+                            <p style="text-align: left;">232.8 MB<span style="float: right;">22.2 MB</span></p>
+                        </td>
+                    </tr>
+                </table>
+                <p>
+                    Our method maintains high rendering quality while only using a fraction of the memory footprint.
+                </p>
+                <img style="display: block; margin-left: auto; margin-right: auto; width: 90%;"
+                     src="static/images/table.png" alt="MY ALT TEXT"/>
+
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@misc{morgenstern2023compact,
+	title={Compact 3D Scene Representation via Self-Organizing Gaussian Grids}, 
+	author={Wieland Morgenstern and Florian Barthel and Anna Hilsmann and Peter Eisert},
+	year={2023},
+	eprint={2312.13299},
+	archivePrefix={arXiv},
+	primaryClass={cs.CV}
+}</code></pre>
+    </div>
+</section>
+
+<!--End BibTex citation -->
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This page was built using the
+                        <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                           target="_blank">Academic
+                            Project
+                            Page Template</a>. <br/>
+                        This website is licensed under a
+                        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
+                           target="_blank">Creative
+                            Commons
+                            Attribution-ShareAlike 4.0 International
+                            License</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Statcounter tracking code -->
+
+<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+<!-- End of Statcounter Code -->
 </body>
-
 </html>
