@@ -26,3 +26,4 @@ The integration of the sorting, the smoothness regularization and the compressio
 * 2024-02-22: The code for the sorting algorithm is now available at [fraunhoferhhi/PLAS](https://github.com/fraunhoferhhi/PLAS)
 * 2024-02-21: Video comparisons for different scenes available on the [project website](https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/)
 * 2023-12-19: Preprint available on [arXiv](https://arxiv.org/abs/2312.13299)
+* 2024-05-14: Improved compression scores! New results available on the [project website](https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/)
