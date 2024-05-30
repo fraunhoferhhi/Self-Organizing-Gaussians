@@ -110,13 +110,14 @@ def training(cfg):
         viewpoint_cam = viewpoint_stack.pop(randint(0, len(viewpoint_stack)-1))
 
         # Render
-        if (iteration - 1) == debug_from:
-            pipe.debug = True
+        if (iteration - 1) == cfg.debug.debug_from:
+            cfg.pipeline.debug = True
 
-        bg = torch.rand((3), device="cuda") if opt.random_background else background
+        bg = torch.rand((3), device="cuda") if cfg.optimization.random_background else background
 
-        render_pkg = render(viewpoint_cam, gaussians, pipe, bg)
-        image, viewspace_point_tensor, visibility_filter, radii = render_pkg["render"], render_pkg["viewspace_points"], render_pkg["visibility_filter"], render_pkg["radii"]
+        render_pkg = render(viewpoint_cam, gaussians, cfg.pipeline, bg)
+        image, viewspace_point_tensor, visibility_filter, radii = render_pkg["render"], render_pkg["viewspace_points"], \
+            render_pkg["visibility_filter"], render_pkg["radii"]
 
         # Loss
         gt_image = viewpoint_cam.original_image.cuda()
@@ -129,15 +130,41 @@ def training(cfg):
         with torch.no_grad():
             # Progress bar
             ema_loss_for_log = 0.4 * loss.item() + 0.6 * ema_loss_for_log
-            if iteration % 10 == 0:
-                progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{7}f}"})
-                progress_bar.update(10)
-            if iteration == opt.iterations:
-                progress_bar.close()
+
+            if progress_bar is not None:
+                if iteration % 10 == 0:
+                    progress_bar.set_postfix({"Loss": f"{ema_loss_for_log:.{7}f}"})
+                    progress_bar.update(10)
+                if iteration == cfg.optimization.iterations:
+                    progress_bar.close()
+
+            # Debug view
+            if cfg.wandb_debug_view.interval != -1 and iteration % cfg.wandb_debug_view.interval == 0:
+                if cfg.wandb_debug_view.view_enabled:
+                    debug_viewer.training_view_wandb(scene, gaussians, pipe=cfg.pipeline, step=iteration, background=background)
+                if cfg.wandb_debug_view.save_hist:
+                    save_hist(gaussians, step=iteration)
+                
+            if cfg.local_window_debug_view.enabled and cfg.local_window_debug_view.interval != -1 and iteration % cfg.local_window_debug_view.interval == 0:
+                debug_viewer.training_view(scene, gaussians, pipe=cfg.pipeline, background=background)
+                
 
             # Log and save
-            training_report(tb_writer, iteration, Ll1, loss, l1_loss, iter_start.elapsed_time(iter_end), testing_iterations, scene, render, (pipe, background))
-            if (iteration in saving_iterations):
+            if iteration % cfg.run.log_training_report_interval == 0:
+                wandb.log(
+                    {
+                        "loss/l1_loss": Ll1.item(),
+                        "loss/total_loss": loss.item(),
+                        "loss/nb_loss": nb_loss.item(),
+                        "iter_time": iter_start.elapsed_time(iter_end),
+                        "num gaussians": len(gaussians.get_xyz),
+                    },
+                    step=iteration
+                )
+                if iteration in cfg.run.test_iterations:
+                    training_report(cfg, iteration, scene, gaussians, (cfg.pipeline, background), log_name="uncompressed")
+
+            if (iteration in cfg.run.save_iterations):
                 print("\n[ITER {}] Saving Gaussians".format(iteration))
                 scene.save(iteration)
 

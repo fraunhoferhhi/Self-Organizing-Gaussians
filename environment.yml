@@ -20,6 +20,7 @@ dependencies:
   - pandas
   - pip
   - plyfile
+  - screeninfo
   - scipy
   - tqdm
 
