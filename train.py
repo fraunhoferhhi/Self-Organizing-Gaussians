@@ -194,6 +194,25 @@ def training(cfg):
                 print("\n[ITER {}] Saving Gaussians".format(iteration))
                 scene.save(iteration)
 
+            # Compression
+            if (iteration in cfg.run.compress_iterations):
+                print("\n[ITER {}] Compressing Gaussians".format(iteration))
+                compr_path = os.path.join(cfg.dataset.model_path, "compression", f"iteration_{iteration}")
+                
+                # enable compression of non-sorted gaussians without affecting results
+                gaussians_to_compress = deepcopy(gaussians)
+                gaussians_to_compress.prune_to_square_shape()
+                
+                compr_results = run_compressions(gaussians_to_compress, compr_path, OmegaConf.to_container(cfg.compression))
+                wandb.log(compr_results, step=iteration)
+
+                for compr_name, decompressed_gaussians in run_decompressions(compr_path):
+                    training_report(cfg, iteration, scene, decompressed_gaussians, (cfg.pipeline, background), log_name=f"cmpr_{compr_name}", log_GT=False)
+                
+                # decompress plys in last compression iteration
+                if iteration == max(cfg.run.compress_iterations):
+                    decompress_all_to_ply(compr_path)
+
             # Densification
             if iteration < cfg.optimization.densify_until_iter:
                 # Keep track of max radii in image-space for pruning
