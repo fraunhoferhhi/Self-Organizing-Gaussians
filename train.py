@@ -101,13 +101,13 @@ def training(cfg):
         gaussians.update_learning_rate(iteration)
 
         # Every 1000 its we increase the levels of SH up to a maximum degree
-        if iteration % 1000 == 0:
+        if iteration % 1000 == 0 and cfg.run.use_sh:
             gaussians.oneupSHdegree()
 
         # Pick a random Camera
         if not viewpoint_stack:
             viewpoint_stack = scene.getTrainCameras().copy()
-        viewpoint_cam = viewpoint_stack.pop(randint(0, len(viewpoint_stack)-1))
+        viewpoint_cam = viewpoint_stack.pop(randint(0, len(viewpoint_stack) - 1))
 
         # Render
         if (iteration - 1) == cfg.debug.debug_from:
@@ -122,7 +122,33 @@ def training(cfg):
         # Loss
         gt_image = viewpoint_cam.original_image.cuda()
         Ll1 = l1_loss(image, gt_image)
-        loss = (1.0 - opt.lambda_dssim) * Ll1 + opt.lambda_dssim * (1.0 - ssim(image, gt_image))
+
+        loss = (1.0 - cfg.optimization.lambda_dssim) * Ll1 + cfg.optimization.lambda_dssim * (1.0 - ssim(image, gt_image))
+
+        # ----------------------
+        # SSGS
+        if cfg.neighbor_loss.lambda_neighbor > 0:
+            
+            nb_losses = []
+            wandb_log = {}
+            
+            attr_getter_fn = gaussians.get_activated_attr_flat if cfg.neighbor_loss.activated else gaussians.get_attr_flat
+
+            weight_sum = sum(cfg.neighbor_loss.weights.values())
+            for attr_name, attr_weight in cfg.neighbor_loss.weights.items():
+                if attr_weight > 0:
+                    nb_losses.append(gaussians.neighborloss_2d(attr_getter_fn(attr_name), cfg.neighbor_loss) * attr_weight / weight_sum)
+                    wandb_log[f"neighbor_loss/{attr_name}"] = nb_losses[-1]
+                
+            nb_loss = cfg.neighbor_loss.lambda_neighbor * sum(nb_losses)
+            
+            if iteration % cfg.run.log_nb_loss_interval == 0:
+                wandb.log(wandb_log, step=iteration)
+        else:
+            nb_loss = torch.tensor(0.0)
+        # ----------------------
+
+        loss += nb_loss
         loss.backward()
 
         iter_end.record()
@@ -175,11 +201,21 @@ def training(cfg):
                                                                      radii[visibility_filter])
                 gaussians.add_densification_stats(viewspace_point_tensor, visibility_filter)
 
-                if iteration > opt.densify_from_iter and iteration % opt.densification_interval == 0:
-                    size_threshold = 20 if iteration > opt.opacity_reset_interval else None
-                    gaussians.densify_and_prune(opt.densify_grad_threshold, 0.005, scene.cameras_extent, size_threshold)
-                
-                if iteration % opt.opacity_reset_interval == 0 or (dataset.white_background and iteration == opt.densify_from_iter):
+                if iteration > cfg.optimization.densify_from_iter and iteration % cfg.optimization.densification_interval == 0:
+                    size_threshold = 20 if iteration > cfg.optimization.opacity_reset_interval else None
+                    gaussians.densify_and_prune(max_grad=cfg.optimization.densify_grad_threshold, min_opacity=cfg.optimization.densify_min_opacity, extent=scene.cameras_extent, max_screen_size=size_threshold)
+
+            if iteration > cfg.optimization.densify_from_iter and iteration % cfg.optimization.densification_interval == 0:
+                # ----------------------
+                # SSGS
+                if cfg.sorting.enabled:
+                    gaussians.prune_to_square_shape()
+                    gaussians.sort_into_grid(cfg.sorting, not cfg.run.no_progress_bar)
+                # ----------------------
+
+            if iteration < cfg.optimization.densify_until_iter:
+                if iteration % cfg.optimization.opacity_reset_interval == 0 or (
+                        cfg.dataset.white_background and iteration == cfg.optimization.densify_from_iter):
                     gaussians.reset_opacity()
 
             # Optimizer step
