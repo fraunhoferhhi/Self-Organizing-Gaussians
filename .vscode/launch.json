@@ -1,0 +1,35 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Train truck",
+            "type": "python",
+            "request": "launch",
+            "program": "train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--config-name",
+                "ours_q_sh_local_test",
+                "hydra.run.dir=/data/output/${now:%Y-%m-%d}/${now:%H-%M-%S}-${run.name}",
+                "dataset.source_path=/data/gaussian_splatting/tandt_db/tandt/truck",
+                "run.no_progress_bar=false",
+                // "local_window_debug_view.enabled=true",
+                // "run.save_iterations=[1200]",
+                // "optimization.iterations=1200",
+                "run.name=vs-code-debug",
+                // "dataset.sh_degree=3",
+                // "sorting.shuffle=true",
+                // "run.compress_iterations=[10,20]",
+                // "run.test_iterations=[10,20]",
+                // "run.save_iterations=[15,20]",
+                // "optimization.densification_interval=10",
+                // "optimization.iterations=20",
+                "run.test_lpips=false",
+            ]
+        },
+    ]
+}
