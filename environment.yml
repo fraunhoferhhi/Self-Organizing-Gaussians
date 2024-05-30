@@ -5,23 +5,29 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - cudatoolkit=11.8
   - python=3.10
-  - plyfile
-  - pip
+
+  - cudatoolkit=11.8
+
   - pytorch
   - pytorch-cuda=11.8
   - torchvision
-  - tqdm
-  - kornia
-  - opencv
-  - scipy
-  - pandas
+
   - click
   - hydra-core
+  - kornia
+  - opencv
+  - pandas
+  - pip
+  - plyfile
+  - scipy
+  - tqdm
+
   - pip:
     - submodules/diff-gaussian-rasterization
     - submodules/simple-knn
+
     - submodules/PLAS
+
     - imagecodecs[all]
     - wandb
