@@ -1,0 +1,162 @@
+experiments:
+  - name: "NPZ"
+    attributes:
+      - name: "_xyz"
+        method: "npz"
+      - name: "_features_dc"
+        method: "npz"
+      - name: "_scaling"
+        method: "npz"
+      - name: "_rotation"
+        method: "npz"
+      - name: "_opacity"
+        method: "npz"
+
+  - name: "JXL ll"
+    attributes:
+      - name: "_xyz"
+        method: "jpeg-xl"
+        params:
+          level: 101
+      - name: "_features_dc"
+        method: "jpeg-xl"
+        params:
+          level: 101
+      - name: "_scaling"
+        method: "jpeg-xl"
+        params:
+          level: 101
+      - name: "_rotation"
+        method: "jpeg-xl"
+        params:
+          level: 101
+      - name: "_opacity"
+        method: "jpeg-xl"
+        params:
+          level: 101
+
+  - name: "PNG 16"
+    attributes:
+      - name: "_xyz"
+        method: "png"
+        normalize: true
+        contract: false
+        params:
+          dtype: "uint16"
+      - name: "_features_dc"
+        method: "png"
+        normalize: true
+        params:
+          dtype: "uint16"
+      - name: "_scaling"
+        method: "png"
+        normalize: true
+        params:
+          dtype: "uint16"
+      - name: "_rotation"
+        method: "png"
+        normalize: true
+        params:
+          dtype: "uint16"
+      - name: "_opacity"
+        method: "png"
+        normalize: true
+        params:
+          dtype: "uint16"
+
+  # EXR w/ OpenCV can only write 1, 3 or 4 channels
+  - name: "EXR"
+    attributes:
+      - name: "_xyz"
+        method: "exr"
+        params:
+          compression: "zip"
+      - name: "_features_dc"
+        method: "exr"
+        params:
+          compression: "zip"
+      - name: "_scaling"
+        method: "exr"
+        params:
+          compression: "zip"
+      - name: "_rotation"
+        method: "exr"
+        params:
+          compression: "zip"
+      - name: "_opacity"
+        method: "exr"
+        params:
+          compression: "zip"
+
+  - name: "EXR+JXL q"
+    attributes:
+      - name: "_xyz"
+        method: "exr"
+        normalize: false
+        contract: false
+        quantize: 13
+        params:
+          compression: "zip"
+      - name: "_features_dc"
+        method: "jpeg-xl"
+        normalize: true
+        # contract: false
+        # quantize: 8
+        params:
+          level: 90
+      - name: "_scaling"
+        method: "exr"
+        normalize: false
+        contract: false
+        quantize: 6
+        params:
+          compression: "zip"
+      - name: "_rotation"
+        method: "exr"
+        normalize: false
+        # contract: false
+        quantize: 6
+        params:
+          compression: "zip"
+      - name: "_opacity"
+        method: "exr"
+        normalize: true
+        contract: false
+        quantize: 5
+        params:
+          compression: "zip"
+
+  - name: "JXL"
+    attributes:
+      - name: "_xyz"
+        method: "jpeg-xl"
+        normalize: true
+        quantize: 14
+        params:
+          # compression: "zip"
+          level: 101
+      - name: "_features_dc"
+        method: "jpeg-xl"
+        normalize: true
+        params:
+          level: 100
+      - name: "_scaling"
+        method: "jpeg-xl"
+        normalize: false
+        contract: false
+        quantize: 6
+        params:
+          level: 101
+      - name: "_rotation"
+        method: "jpeg-xl"
+        normalize: true
+        quantize: 6
+        params:
+          level: 101
+      - name: "_opacity"
+        method: "jpeg-xl"
+        normalize: true
+        contract: false
+        quantize: 6
+        params:
+          level: 101

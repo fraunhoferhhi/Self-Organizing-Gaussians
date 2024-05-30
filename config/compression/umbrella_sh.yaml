@@ -1,0 +1,82 @@
+experiments:
+  - name: "exr_jxl_quant_5_norm"
+    attributes:
+      - name: "_xyz"
+        method: "exr"
+        normalize: false
+        contract: false
+        quantize: 13
+        params:
+          compression: "zip"
+      - name: "_features_dc"
+        method: "jpeg-xl"
+        normalize: true
+        params:
+          level: 90
+      - name: "_features_rest"
+        method: "jpeg-xl"
+        normalize: true
+        quantize: 5
+        params:
+          level: 101
+      - name: "_scaling"
+        method: "exr"
+        normalize: false
+        contract: false
+        quantize: 6
+        params:
+          compression: "none"
+      - name: "_rotation"
+        method: "exr"
+        normalize: false
+        quantize: 6
+        params:
+          compression: "zip"
+      - name: "_opacity"
+        method: "exr"
+        normalize: true
+        contract: false
+        quantize: 5
+        params:
+          compression: "none"
+
+  - name: "jxl_quant_sh"
+    attributes:
+      - name: "_xyz"
+        method: "jpeg-xl"
+        normalize: true
+        quantize: 14
+        params:
+          # compression: "zip"
+          level: 101
+      - name: "_features_dc"
+        method: "jpeg-xl"
+        normalize: true
+        params:
+          level: 100
+      - name: "_features_rest"
+        method: "jpeg-xl"
+        normalize: true
+        quantize: 5
+        params:
+          level: 101
+      - name: "_scaling"
+        method: "jpeg-xl"
+        normalize: false
+        contract: false
+        quantize: 6
+        params:
+          level: 101
+      - name: "_rotation"
+        method: "jpeg-xl"
+        normalize: true
+        quantize: 6
+        params:
+          level: 101
+      - name: "_opacity"
+        method: "jpeg-xl"
+        normalize: true
+        contract: false
+        quantize: 6
+        params:
+          level: 101
