@@ -7,6 +7,7 @@ channels:
 dependencies:
   - cudatoolkit=11.8
   - python=3.10
+  - plyfile
   - pip
   - pytorch
   - pytorch-cuda=11.8
