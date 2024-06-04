@@ -5,14 +5,16 @@ defaults:
 
 hydra:
   run:
+    # output directory for results
     dir: ./output/${now:%Y-%m-%d}/${now:%H-%M-%S}-${run.name}
 
 run:
+  # wandb config: group, run name, tags
   group: "rank_sum_choices"
   name: "run"
   tags: ""
 
-  # will be replaced at runtime
+  # don't set manually, will be replaced at runtime
   wandb_url: null
 
   test_iterations:
@@ -26,7 +28,7 @@ run:
   # use spherical harmonics in optimization
   use_sh: true
 
-  # throws away any output
+  # throws away any command-line output
   quiet: false
 
   # hide progress bar

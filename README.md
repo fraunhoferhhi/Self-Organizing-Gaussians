@@ -34,6 +34,35 @@ or
 git clone https://github.com/fraunhoferhhi/Self-Organizing-Gaussians.git --recursive
 ```
 
+## Python Environment
+
+The code is using a few additional Python packages on top of graphdeco-inria/gaussian-splatting. We provide an extended environment.yml:
+
+```shell
+conda env create --file environment.yml
+conda activate sogs
+```
+
+## Example training
+
+Download a dataset, e.g. [T&T](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip).
+
+The train.py script expects a name to a .yaml config file in the [config/](config/) folder. All parameters for the run are by default loaded from the yaml file. An example launch file can be found in .vscode/launch.json, for launching from Visual Studio Code.
+
+Example:
+
+```shell
+python train.py \
+  --config-name ours_q_sh_local_test \
+  hydra.run.dir=/data/output/${now:%Y-%m-%d}/${now:%H-%M-%S}-${run.name} \
+  dataset.source_path=/data/gaussian_splatting/tandt_db/tandt/truck \
+  run.no_progress_bar=false \
+  run.name=vs-code-debug
+```
+
+The parameter configurations can be overriden in the launch as shown (using [Hydra](https://hydra.cc/)).
+
+
 ## Differences with graphdeco-inria/gaussian-splatting
 
 ### Updates
