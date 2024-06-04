@@ -19,7 +19,22 @@ This repository is a fork of the official authors implementation associated with
 
 The code for "Compact 3D Scene Representation via Self-Organizing Gaussian Grids" consists of multiple parts. The multi-dimensional sorting algorithm, PLAS, is available under the Apache License at [fraunhoferhhi/PLAS](https://github.com/fraunhoferhhi/PLAS).
 
-The integration of the sorting, the smoothness regularization and the compression code for training 3D scenes with the extended 3D Gaussian Splatting will become available in this repository.
+The integration of the sorting, the smoothness regularization and the compression code for training and compressing 3D scenes is available in this repository.
+
+## Cloning the Repository
+
+The repository contains submodules, thus please check it out with 
+```shell
+# SSH
+git clone git@github.com:fraunhoferhhi/Self-Organizing-Gaussians.git --recursive
+```
+or
+```shell
+# HTTPS
+git clone https://github.com/fraunhoferhhi/Self-Organizing-Gaussians.git --recursive
+```
+
+## Differences with graphdeco-inria/gaussian-splatting
 
 ### Updates
 
