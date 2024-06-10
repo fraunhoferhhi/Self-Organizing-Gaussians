@@ -38,9 +38,11 @@ git clone https://github.com/fraunhoferhhi/Self-Organizing-Gaussians.git --recur
 
 The code is using a few additional Python packages on top of graphdeco-inria/gaussian-splatting. We provide an extended environment.yml:
 
+Installation with [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
+
 ```shell
-conda env create --file environment.yml
-conda activate sogs
+micromamba env create --file environment.yml --channel-priority flexible -y
+micromamba activate sogs
 ```
 
 ## Example training
