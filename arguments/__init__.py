@@ -12,6 +12,7 @@
 from argparse import ArgumentParser, Namespace
 import sys
 import os
+from omegaconf import OmegaConf
 
 class GroupParams:
     pass
@@ -110,3 +111,14 @@ def get_combined_args(parser : ArgumentParser):
         if v != None:
             merged_dict[k] = v
     return Namespace(**merged_dict)
+
+def get_hydra_training_args(model_path):
+    try:
+        cfgfilepath = os.path.join(model_path, "training_config.yaml")
+        print("Looking for config file in", cfgfilepath)
+        with open(cfgfilepath, 'r') as file:
+            print("Config file found: {}".format(cfgfilepath))
+            training_cfg = OmegaConf.load(cfgfilepath)
+            return training_cfg
+    except TypeError:
+        print("Config file not found!")
