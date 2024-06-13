@@ -80,7 +80,7 @@ Code differences can be found in this diff: https://github.com/fraunhoferhhi/Sel
 - option to disable spherical harmonics
 
 
-### Updates
+## Updates
 
 - 2024-06-13: Training code available
 - 2024-05-14: Improved compression scores! New results for paper v2 available on the [project website](https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/)
