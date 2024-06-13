@@ -67,6 +67,8 @@ The parameter configurations can be overriden in the launch as shown (using [Hyd
 
 ## Differences with graphdeco-inria/gaussian-splatting
 
+Code differences can be found in this diff: https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/pull/1/files
+
 ### Usage
 - different command-line interface for train.py (using Hydra)
 - wandb.ai used for logging
