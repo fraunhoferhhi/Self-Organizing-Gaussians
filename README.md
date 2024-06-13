@@ -67,8 +67,20 @@ The parameter configurations can be overriden in the launch as shown (using [Hyd
 
 ## Differences with graphdeco-inria/gaussian-splatting
 
+### Usage
+- different command-line interface for train.py (using Hydra)
+- wandb.ai used for logging
+
+### Code extensions
+- post-training quantization, compression/decompression
+- xyz log activation (gaussian_model.py)
+- grid sorting, neighbor loss (gaussian_model.py)
+- option to disable spherical harmonics
+
+
 ### Updates
 
+- 2024-06-13: Training code available
 - 2024-05-14: Improved compression scores! New results for paper v2 available on the [project website](https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/)
 - 2024-05-02: Revised [paper v2](https://arxiv.org/pdf/2312.13299) on arXiv: Added compression of spherical harmonics, updated compression method with improved results (all attributes compressed with JPEG XL now), added qualitative comparison of additional scenes, moved compression explanation and comparison to main paper, added comparison with "Making Gaussian Splats smaller".
 - 2024-02-22: The code for the sorting algorithm is now available at [fraunhoferhhi/PLAS](https://github.com/fraunhoferhhi/PLAS)
