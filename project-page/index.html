@@ -119,6 +119,39 @@
     </div>
 </section>
 
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">TL;DR</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        Organize the parameters of 3D Gaussian Splatting (3DGS) scenes into a <b>2D grid</b> and enforce <b>local smoothness</b> during training. Then leverage off-the-shelf image compression to store the attribute images for a high compression rate. This beats most concurrent compression methods in <b>size</b>, and all other methods in <b>quality</b>. And the file format and decoding is dead simple.
+                    </p>
+                </div>
+
+                <h2 class="title is-4">Contributions</h2>
+                <div class="content has-text-justified">
+                <ol>
+                    <li>We <strong>propose a novel compact scene representation and training concept for 3DGS</strong>, structuring the high-dimensional features in a <strong>smooth 2D grid</strong>, which can be efficiently encoded using state-of-the-art compression methods.</li>
+                    <li>We <strong>introduce an efficient 2D sorting algorithm called Parallel Linear Assignment Sorting (PLAS)</strong> that sorts millions of 3DGS parameters on the GPU in seconds.</li>
+                    <li>We provide a simple to use interface for compressing and decompressing the resulting 3D scenes. The decompressed reconstructions share the structure of 3DGS, allowing integration into established renderers.</li>
+                    <li>We efficiently <strong>reduce the storage size by a factor of 17x to 42x</strong> while maintaining high visual quality.</li>
+                </ol>
+
+                </div>
+
+                <h2 class="title is-4">Key Insight</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        The goal of compressing 3DGS scenes is to provide a compact representation that can be rendered into the training &amp; test views, without losing visual detail. We are <i>not</i> bound to a specific configuration of Gaussian splats: we can mold the splats during training to be well-compressible. We leverage this to enforce neighboring splats to share attributes, e.g. neighbors in xyz sharing the same rotation values.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Teaser video-->
 <section class="hero teaser">
     <div class="container is-max-desktop">
