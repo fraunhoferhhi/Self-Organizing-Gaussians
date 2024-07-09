@@ -130,6 +130,17 @@
                     </p>
                 </div>
 
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section hero is-small">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+
+
                 <h2 class="title is-4">Contributions</h2>
                 <div class="content has-text-justified">
                 <ol>
@@ -196,9 +207,11 @@
     </div>
 </section>
 
-<section class="hero is-small">
-    <div class="hero-body">
-        <div class="container">
+
+<section class="section hero is-small">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
 
             <h2 class="title is-3">Method</h2>
             <div class="content has-text-justified">
@@ -209,20 +222,50 @@
                     creates redundancy which help to compress the 2D grids into small files using off-the-shelf
                     compression methods.
                 </p>
-                <img src="static/images/method.png" alt="MY ALT TEXT"/>
             </div>
+        </div>
+    </div>
+</section>
 
-            <h2 class="title is-3">Results</h2>
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container">
+            <img src="static/images/method.png" alt="MY ALT TEXT"/>
+        </div>
+    </div>
+</section>
+
+
+<section class="section hero is-small">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+
+                <h2 class="title is-3">Results</h2>
+
+                <div class="content has-text-justified">
+
+                    <p>
+                        Here we render results of scenes in vanilla 3DGS vs. our compression method. You can move the split divider to compare 3DGS on the left and our method on the right of each video.
+                    </p>
+                    <p>
+                        Parts of the scene covered by many cameras (like the front of the truck) look near identical. Other parts (concrete a few steps away from the truck, the background) are seen by fewer cameras. In 3DGS, this produces highly view-dependent small details and floaters. Through the local neighbor smoothness, our method generalizes better for these sparser parts of the scene. The result is overall smoother, and more pleaseant to look at, also removing many of the distracting floaters.
+                    </p>    
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container">
 
             <div class="content has-text-justified">
-
-                <p>
-                    Here we render results of scenes in vanilla 3DGS vs. our compression method. You can move the split divider to compare 3DGS on the left and our method on the right of each video.
-                </p>
-                <p>
-                    Parts of the scene covered by many cameras (like the front of the truck) look near identical. Other parts (concrete a few steps away from the truck, the background) are seen by fewer cameras. In 3DGS, this produces highly view-dependent small details and floaters. Through the local neighbor smoothness, our method generalizes better for these sparser parts of the scene. The result is overall smoother, and more pleaseant to look at, also removing many of the distracting floaters.
-                </p>    
-
 
                 <h2 class="title is-5">Truck (Tanks &amp; Temples dataset)</h2>
                 <table>
@@ -302,9 +345,10 @@
     </div>
 </section>
 
-<section class="hero is-small">
-    <div class="hero-body">
-        <div class="container">
+<section class="section hero is-small">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
             <h2 class="title is-3">Comparison with other 3DGS compression methods</h2>
 
             <div class="content has-text-justified">
@@ -366,6 +410,7 @@
                             storage size of 3D Gaussian splatting
                             scenes. Contributions welcome!
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
