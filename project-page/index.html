@@ -235,7 +235,7 @@
 
 
             <div class="content has-text-justified">
-                <strong>Quantitative results:</strong> Our method significantly outperforms the default 3D Gaussian Splatting (3DGS) and prior NeRF-based 3D reconstruction methods in terms of storage size and rendering efficiency. We achieve a reduction in storage size by a factor of 17x to 42x, depending on the dataset, with the most notable reduction being 41.6x on the Deep Blending dataset. Deactivating spherical harmonics during training further enhances this reduction to 127x over vanilla 3DGS, while also improving PSNR metrics. Our approach maintains competitive visual quality metrics (PSNR and L-PIPS) compared to Mip-NeRF360 and VQ-TensoRF but allows for real-time rendering and significantly faster training, approximately 10 to 30 minutes per scene. Additionally, our optimized method renders scenes more quickly, achieving 515 fps compared to 385 fps for the vanilla 'Truck' dataset model on the same GPU, while also displaying better visual quality, compared to vanilla 3DGS.
+                <strong>Quantitative results:</strong> Our method significantly outperforms the default 3D Gaussian Splatting (3DGS) and prior NeRF-based 3D reconstruction methods in terms of storage size and rendering efficiency. We achieve a <b>reduction in storage size</b> by a factor of <b>17x to 42x</b>, depending on the dataset, with the most notable reduction being 41.6x on the Deep Blending dataset. Deactivating spherical harmonics during training further enhances this reduction to 127x over vanilla 3DGS, while also improving PSNR metrics. Our approach maintains competitive visual quality metrics (PSNR and L-PIPS) compared to Mip-NeRF360 and VQ-TensoRF but allows for real-time rendering and significantly faster training, approximately 10 to 30 minutes per scene. Additionally, our optimized method renders scenes more quickly, achieving 515 fps compared to 385 fps for the vanilla 'Truck' dataset model on the same GPU, while also displaying better visual quality, compared to vanilla 3DGS.
             </div>
                 <img style="display: block; margin-left: auto; margin-right: auto; width: 90%;"
                      src="static/images/table.png" alt="MY ALT TEXT"/>
@@ -253,10 +253,10 @@
                 Multiple concurrent methods have been developed for compressing 3D Gaussian splats. Commonly, these methods aim to reduce the number of Gaussians needed for the scene and apply quantized vector compression. Unlike other approaches that utilize codebooks or hash grids for vector coding, our method is unique in organizing the Gaussians into locally smooth 2D grids during training.
             </div>
             <div class="content has-text-justified">
-                This grid organization during training enables the use of standard image compression techniques to code the attributes. This simplifies decoding: one simply decompresses the grid attribute images and applies a rescaling. Each pixel from the coded images then corresponds to a set of Gaussian splatting attributes, which can be rendered with any standard 3DGS render engine.
+                This grid organization during training enables the use of standard image compression techniques to code the attributes. This simplifies decoding: one <b>simply decompresses</b> the grid attribute images and applies a rescaling. Each pixel from the coded images then corresponds to a set of Gaussian splatting attributes, which can be rendered with any standard 3DGS render engine.
             </div>
             <div class="content has-text-justified">
-                As of July 2024, our method (<i>Morgenstern et al.</i>) achieves the highest quality for the compared datasets, second only in size to the <a href="https://yihangchen-ee.github.io/project_hac/">HAC</a> method, also presented at ECCV 2024.
+                As of July 2024, <b>our method</b> (<i>Morgenstern et al.</i>) achieves the <b>highest quality</b> for the compared datasets, <b>second only in size</b> to the <a href="https://yihangchen-ee.github.io/project_hac/">HAC</a> method, also presented at ECCV 2024.
             </div>
             <div class="content has-text-justified">
                 We invite you to explore other methods for compressing Gaussian splats and compare their approaches in this survey:
