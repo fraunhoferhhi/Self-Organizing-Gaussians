@@ -252,16 +252,18 @@
             <h2 class="title is-3">Comparison with other 3DGS compression methods</h2>
 
             <div class="content has-text-justified">
-                Multiple concurrent methods have been developed for compressing 3D Gaussian splats. Commonly, these methods aim to reduce the number of Gaussians needed for the scene and apply quantized vector compression. Unlike other approaches that utilize codebooks or hash grids for vector coding, our method is unique in organizing the Gaussians into locally smooth 2D grids during training.
-            </div>
-            <div class="content has-text-justified">
-                This grid organization during training enables the use of standard image compression techniques to code the attributes. This simplifies decoding: one <b>simply decompresses</b> the grid attribute images and applies a rescaling. Each pixel from the coded images then corresponds to a set of Gaussian splatting attributes, which can be rendered with any standard 3DGS render engine.
-            </div>
-            <div class="content has-text-justified">
-                As of July 2024, <b>our method</b> (<i>Morgenstern et al.</i>) achieves the <b>highest quality</b> for the compared datasets, <b>second only in size</b> to the <a href="https://yihangchen-ee.github.io/project_hac/">HAC</a> method, also presented at ECCV 2024.
-            </div>
-            <div class="content has-text-justified">
-                We invite you to explore other methods for compressing Gaussian splats and compare their approaches in this survey:
+                <p>
+                    Multiple concurrent methods have been developed for compressing 3D Gaussian splats. Commonly, these methods aim to reduce the number of Gaussians needed for the scene and apply quantized vector compression. Unlike other approaches that utilize codebooks or hash grids for vector coding, our method is unique in organizing the Gaussians into locally smooth 2D grids during training.
+                </p>
+                <p>
+                    This grid organization during training enables the use of standard image compression techniques to code the attributes. This simplifies decoding: one <b>simply decompresses</b> the grid attribute images and applies a rescaling. Each pixel from the coded images then corresponds to a set of Gaussian splatting attributes, which can be rendered with any standard 3DGS render engine.
+                </p>
+                <p>
+                    As of July 2024, <b>our method</b> (<i>Morgenstern et al.</i>) achieves the <b>highest quality</b> for the compared datasets, <b>second only in size</b> to the <a href="https://yihangchen-ee.github.io/project_hac/">HAC</a> method, also presented at ECCV 2024.
+                </p>
+                <p>
+                    We invite you to explore other methods for compressing Gaussian splats and compare their approaches in this survey:
+                </p>
             </div>
 
             <div class="container is-max-desktop">
