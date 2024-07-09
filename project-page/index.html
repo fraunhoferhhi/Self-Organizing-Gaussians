@@ -182,6 +182,16 @@
             <h2 class="title is-3">Results</h2>
 
             <div class="content has-text-justified">
+
+                <p>
+                    Here we render results of scenes in vanilla 3DGS vs. our compression method. You can move the split divider to compare 3DGS on the left and our method on the right of each video.
+                </p>
+                <p>
+                    Parts of the scene covered by many cameras (like the front of the truck) look near identical. Other parts (concrete a few steps away from the truck, the background) are seen by fewer cameras. In 3DGS, this produces highly view-dependent small details and floaters. Through the local neighbor smoothness, our method generalizes better for these sparser parts of the scene. The result is overall smoother, and more pleaseant to look at, also removing many of the distracting floaters.
+                </p>    
+
+
+                <h2 class="title is-5">Truck (Tanks &amp; Temples dataset)</h2>
                 <table>
                     <tr>
                         <th style="text-align: left; width: 50%;">3DGS<span style="float: right;">Ours</span>
@@ -209,6 +219,19 @@
                             <p style="text-align: left;">174.0 MB<span style="float: right;">11.8 MB</span></p>
                         </td>
                     </tr>
+                </table>
+
+                    <h2 class="title is-5">Flowers (Mip-NeRF 360 dataset)</h2>
+                <table>
+
+                    <tr>
+                        <th style="text-align: left; width: 50%;">3DGS<span style="float: right;">Ours</span>
+                        </th>
+                        <th style="text-align: left; width: 50%;">3DGS w/o SH<span style="float: right;">Ours
+                                    w/o SH</span>
+                        </th>
+                    </tr>
+
 
                     <tr>
                         <td>
