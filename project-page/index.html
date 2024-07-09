@@ -1,38 +1,45 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="Self-Organizing Gaussian Splats: A new approach to 3D scene representation and rendering, reducing data size significantly while preserving quality, developed by researchers at Fraunhofer Heinrich Hertz Institute HHI and Humboldt University of Berlin."
+    />
+    <meta property="og:title" content="Self-Organizing Gaussian Splats: Efficient 3D Scene Representation" />
+    <meta
+      property="og:description"
+      content="Introducing Self-Organizing Gaussian Splats for compact 3D scene representation. This method significantly reduces the data size needed for high-quality 3D rendering, ideal for applications on resource-constrained devices and fast web applications."
+    />
+    <meta property="og:url" content="https://fraunhoferhhi.github.io/Self-Organizing-Gaussian-Splats/" />
+    <meta property="og:image" content="static/images/teaser_self_organizing_gaussian.jpeg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="675" />
 
-<head>
-    <meta charset="utf-8"/>
-    <meta name="description"
-          content="Self-Organizing Gaussian Splats: A new approach to 3D scene representation and rendering, reducing data size significantly while preserving quality, developed by researchers at Fraunhofer Heinrich Hertz Institute HHI and Humboldt University of Berlin."/>
-    <meta property="og:title" content="Self-Organizing Gaussian Splats: Efficient 3D Scene Representation"/>
-    <meta property="og:description"
-          content="Introducing Self-Organizing Gaussian Splats for compact 3D scene representation. This method significantly reduces the data size needed for high-quality 3D rendering, ideal for applications on resource-constrained devices and fast web applications."/>
-    <meta property="og:url" content="https://fraunhoferhhi.github.io/Self-Organizing-Gaussian-Splats/"/>
-    <meta property="og:image" content="static/images/teaser_self_organizing_gaussian.jpeg"/>
-    <meta property="og:image:width" content="1200"/>
-    <meta property="og:image:height" content="675"/>
-
-    <meta name="twitter:title" content="Discover Self-Organizing Gaussian Splats for 3D Scene Representation"/>
-    <meta name="twitter:description"
-          content="Learn about the novel Self-Organizing Gaussian Splats method, a groundbreaking approach in 3D scene rendering, offering high-quality visuals with reduced data size."/>
-    <meta name="twitter:image" content="static/images/your_twitter_banner_image.png"/>
-    <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="keywords"
-          content="Self-Organizing Gaussian Splats, 3D scene representation, compact data size, high-quality rendering, Fraunhofer Heinrich Hertz Institute, Humboldt University of Berlin, resource-constrained devices, fast web applications"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="twitter:title" content="Discover Self-Organizing Gaussian Splats for 3D Scene Representation" />
+    <meta
+      name="twitter:description"
+      content="Learn about the novel Self-Organizing Gaussian Splats method, a groundbreaking approach in 3D scene rendering, offering high-quality visuals with reduced data size."
+    />
+    <meta name="twitter:image" content="static/images/your_twitter_banner_image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="keywords"
+      content="Self-Organizing Gaussian Splats, 3D scene representation, compact data size, high-quality rendering, Fraunhofer Heinrich Hertz Institute, Humboldt University of Berlin, resource-constrained devices, fast web applications"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Self-Organizing Gaussian Splats Project Page</title>
-    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"/>
-    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet"/>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
 
-    <link rel="stylesheet" href="static/css/bulma.min.css"/>
-    <link rel="stylesheet" href="static/css/bulma-carousel.min.css"/>
-    <link rel="stylesheet" href="static/css/bulma-slider.min.css"/>
-    <link rel="stylesheet" href="static/css/fontawesome.all.min.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css"/>
-    <link rel="stylesheet" href="static/css/index.css"/>
-    <link rel="stylesheet" href="static/css/style.css"/>
+    <link rel="stylesheet" href="static/css/bulma.min.css" />
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="static/css/index.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
@@ -41,390 +48,362 @@
     <script src="static/js/bulma-slider.min.js"></script>
     <script src="static/js/index.js"></script>
     <script src="static/js/vidsplit_multi.js"></script>
+  </head>
 
-</head>
-
-<body>
-<section class="hero">
-    <div class="hero-body">
+  <body>
+    <section class="hero">
+      <div class="hero-body">
         <div class="container is-max-desktop">
-            <div class="columns is-centered">
-                <div class="column has-text-centered">
-                    <h1 class="title is-1 publication-title">
-                        Compact 3D Scene Representation via Self-Organizing Gaussian Grids
-                    </h1>
-                    <h2 class="is-size-3">
-                        ECCV 2024
-                    </h2>
-                    <br />
-                    <div class="is-size-5 publication-authors">
-                        <!-- Paper authors -->
-                        <span class="author-block">
-								<a href="https://www.hhi.fraunhofer.de/en/departments/vit/research-groups/computer-vision-graphics/team/morgenstern.html"
-                                   target="_blank">Wieland Morgenstern</a><sup><small>1</small></sup>,</span>
-                        <span class="author-block">
-								<a href="https://florian-barthel.github.io/" target="_blank">
-									Florian Barthel
-								</a>
-								<sup><small>1,2</small></sup>,</span>
-                        <span class="author-block">
-								<a href="https://iphome.hhi.de/hilsmann/index.htm" target="_blank">Anna
-									Hilsmann</a><sup><small>1</small></sup>,
-							</span>
-                        <span class="author-block">
-								<a href="https://iphome.hhi.de/eisert/" target="_blank">Peter
-									Eisert</a><sup><small>1,2</small></sup>
-							</span>
-                    </div>
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h1 class="title is-1 publication-title">Compact 3D Scene Representation via Self-Organizing Gaussian Grids</h1>
+              <h2 class="is-size-3">ECCV 2024</h2>
+              <br />
+              <div class="is-size-5 publication-authors">
+                <!-- Paper authors -->
+                <span class="author-block">
+                  <a href="https://www.hhi.fraunhofer.de/en/departments/vit/research-groups/computer-vision-graphics/team/morgenstern.html" target="_blank"
+                    >Wieland Morgenstern</a
+                  ><sup><small>1</small></sup
+                  >,</span
+                >
+                <span class="author-block">
+                  <a href="https://florian-barthel.github.io/" target="_blank"> Florian Barthel </a>
+                  <sup><small>1,2</small></sup
+                  >,</span
+                >
+                <span class="author-block">
+                  <a href="https://iphome.hhi.de/hilsmann/index.htm" target="_blank">Anna Hilsmann</a><sup><small>1</small></sup
+                  >,
+                </span>
+                <span class="author-block">
+                  <a href="https://iphome.hhi.de/eisert/" target="_blank">Peter Eisert</a><sup><small>1,2</small></sup>
+                </span>
+              </div>
 
-                    <div class="is-size-5 publication-authors">
-							<span class="author-block">
-								<sup><small>1 </small></sup>Fraunhofer Heinrich Hertz
-								Institute, HHI <br/>
-								<sup><small>2 </small></sup>Humboldt University of Berlin
-								<br/>
-                                <!-- Conferance name and year -->
-							</span>
-                    </div>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <sup><small>1 </small></sup>Fraunhofer Heinrich Hertz Institute, HHI <br />
+                  <sup><small>2 </small></sup>Humboldt University of Berlin
+                  <br />
+                  <!-- Conferance name and year -->
+                </span>
+              </div>
 
-                    <div class="column has-text-centered">
-                        <!-- LateXML rendering GitHub page -->
+              <div class="column has-text-centered">
+                <!-- LateXML rendering GitHub page -->
 
-                        <div class="publication-links">
-                            <!-- Arxiv PDF link -->
-                            <span class="link-block">
-									<a href="https://arxiv.org/pdf/2312.13299.pdf" target="_blank"
-                                       class="external-link button is-normal is-rounded is-dark is-disabled">
-										<span class="icon">
-											<i class="fas fa-file-pdf"></i>
-										</span>
-										<span>Paper</span>
-									</a>
-								</span>
-                            <!-- Github link -->
-                            <span class="link-block">
-									<a href="https://github.com/fraunhoferhhi/Self-Organizing-Gaussian-Splats"
-                                       target="_blank" class="external-link button is-normal is-rounded is-dark">
-										<span class="icon">
-											<i class="fab fa-github"></i>
-										</span>
-										<span>Code</span>
-									</a>
-								</span>
-                        </div>
-                    </div>
+                <div class="publication-links">
+                  <!-- Arxiv PDF link -->
+                  <span class="link-block">
+                    <a href="https://arxiv.org/pdf/2312.13299.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark is-disabled">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+                  <!-- Github link -->
+                  <span class="link-block">
+                    <a
+                      href="https://github.com/fraunhoferhhi/Self-Organizing-Gaussian-Splats"
+                      target="_blank"
+                      class="external-link button is-normal is-rounded is-dark"
+                    >
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="section hero is-light">
-    <div class="container is-max-desktop">
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-                <h2 class="title is-3">TL;DR</h2>
-                <div class="content has-text-justified">
-                    <p>
-                        Organize the parameters of 3D Gaussian Splatting (3DGS) scenes into a <b>2D grid</b> and enforce <b>local smoothness</b> during training. Then leverage off-the-shelf image compression to store the attribute images for a high compression rate. This beats most concurrent compression methods in <b>size</b>, and all other methods in <b>quality</b>. And the file format and decoding is dead simple.
-                    </p>
-                </div>
-
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">TL;DR</h2>
+            <div class="content has-text-justified">
+              <p>
+                Organize the parameters of 3D Gaussian Splatting (3DGS) scenes into a <b>2D grid</b> and enforce <b>local smoothness</b> during training. Then
+                leverage off-the-shelf image compression to store the attribute images for a high compression rate. This beats most concurrent compression
+                methods in <b>size</b>, and all other methods in <b>quality</b>. And the file format and decoding is dead simple.
+              </p>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="section hero is-small">
-    <div class="container is-max-desktop">
+    <section class="section hero is-small">
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-
-
-                <h2 class="title is-4">Contributions</h2>
-                <div class="content has-text-justified">
-                <ol>
-                    <li>We <strong>propose a novel compact scene representation and training concept for 3DGS</strong>, structuring the high-dimensional features in a <strong>smooth 2D grid</strong>, which can be efficiently encoded using state-of-the-art compression methods.</li>
-                    <li>We <strong>introduce an efficient 2D sorting algorithm called Parallel Linear Assignment Sorting (PLAS)</strong> that sorts millions of 3DGS parameters on the GPU in seconds.</li>
-                    <li>We provide a simple to use interface for compressing and decompressing the resulting 3D scenes. The decompressed reconstructions share the structure of 3DGS, allowing integration into established renderers.</li>
-                    <li>We efficiently <strong>reduce the storage size by a factor of 17x to 42x</strong> while maintaining high visual quality.</li>
-                </ol>
-
-                </div>
-
-                <h2 class="title is-4">Key Insight</h2>
-                <div class="content has-text-justified">
-                    <p>
-                        The goal of compressing 3DGS scenes is to provide a compact representation that can be rendered into the training &amp; test views, without losing visual detail. We are <i>not</i> bound to a specific configuration of Gaussian splats: we can mold the splats during training to be well-compressible. We leverage this to enforce neighboring splats to share attributes, e.g. neighbors in xyz sharing the same rotation values.
-                    </p>
-                </div>
+          <div class="column is-four-fifths">
+            <h2 class="title is-4">Contributions</h2>
+            <div class="content has-text-justified">
+              <ol>
+                <li>
+                  We
+                  <strong>propose a novel compact scene representation and training concept for 3DGS</strong>, structuring the high-dimensional features in a
+                  <strong>smooth 2D grid</strong>, which can be efficiently encoded using state-of-the-art compression methods.
+                </li>
+                <li>
+                  We
+                  <strong>introduce an efficient 2D sorting algorithm called Parallel Linear Assignment Sorting (PLAS)</strong>
+                  that sorts millions of 3DGS parameters on the GPU in seconds.
+                </li>
+                <li>
+                  We provide a simple to use interface for compressing and decompressing the resulting 3D scenes. The decompressed reconstructions share the
+                  structure of 3DGS, allowing integration into established renderers.
+                </li>
+                <li>
+                  We efficiently
+                  <strong>reduce the storage size by a factor of 17x to 42x</strong>
+                  while maintaining high visual quality.
+                </li>
+              </ol>
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- Teaser video-->
-<section class="hero teaser">
-    <div class="container is-max-desktop">
+            <h2 class="title is-4">Key Insight</h2>
+            <div class="content has-text-justified">
+              <p>
+                The goal of compressing 3DGS scenes is to provide a compact representation that can be rendered into the training &amp; test views, without
+                losing visual detail. We are <i>not</i> bound to a specific configuration of Gaussian splats: we can mold the splats during training to be
+                well-compressible. We leverage this to enforce neighboring splats to share attributes, e.g. neighbors in xyz sharing the same rotation values.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Teaser video-->
+    <section class="hero teaser">
+      <div class="container is-max-desktop">
         <div class="hero-body">
-            <img style="display: block; margin-left: auto; margin-right: auto; width: 70%;"
-                 src="static/images/teaser.png" alt="MY ALT TEXT"/>
-            <p>
-            </p>
+          <img style="display: block; margin-left: auto; margin-right: auto; width: 70%" src="static/images/teaser.png" alt="MY ALT TEXT" />
+          <p></p>
         </div>
-    </div>
-</section>
-<!-- End teaser video -->
+      </div>
+    </section>
+    <!-- End teaser video -->
 
-<section class="section hero is-light">
-    <div class="container is-max-desktop">
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-                <h2 class="title is-3">Abstract</h2>
-                <div class="content has-text-justified">
-                    <p>
-                        3D Gaussian Splatting has recently emerged as a highly promising technique for modeling of
-                        static 3D scenes. In contrast to Neural Radiance Fields, it utilizes efficient rasterization
-                        allowing for very fast rendering at high-quality. However, the storage size is significantly
-                        higher, which hinders practical deployment, e.g.~on resource constrained devices. In this paper,
-                        we introduce a compact scene representation organizing the parameters of 3D Gaussian Splatting
-                        (3DGS) into a 2D grid with local homogeneity, ensuring a drastic reduction in storage
-                        requirements without compromising visual quality during rendering.
-                        Central to our idea is the explicit exploitation of perceptual redundancies present in natural
-                        scenes. In essence, the inherent nature of a scene allows for numerous permutations of Gaussian
-                        parameters to equivalently represent it. To this end, we propose a novel highly parallel
-                        algorithm that regularly arranges the high-dimensional Gaussian parameters into a 2D grid while
-                        preserving their neighborhood structure. During training, we further enforce local smoothness
-                        between the sorted parameters in the grid. The uncompressed Gaussians use the same structure as
-                        3DGS, ensuring a seamless integration with established renderers. Our method achieves a
-                        reduction factor of 17x to 42x in size for complex scenes with no increase in training time,
-                        marking a substantial leap forward in the domain of 3D scene distribution and consumption.
-                    </p>
-
-                </div>
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div class="content has-text-justified">
+              <p>
+                3D Gaussian Splatting has recently emerged as a highly promising technique for modeling of static 3D scenes. In contrast to Neural Radiance
+                Fields, it utilizes efficient rasterization allowing for very fast rendering at high-quality. However, the storage size is significantly higher,
+                which hinders practical deployment, e.g.~on resource constrained devices. In this paper, we introduce a compact scene representation organizing
+                the parameters of 3D Gaussian Splatting (3DGS) into a 2D grid with local homogeneity, ensuring a drastic reduction in storage requirements
+                without compromising visual quality during rendering. Central to our idea is the explicit exploitation of perceptual redundancies present in
+                natural scenes. In essence, the inherent nature of a scene allows for numerous permutations of Gaussian parameters to equivalently represent it.
+                To this end, we propose a novel highly parallel algorithm that regularly arranges the high-dimensional Gaussian parameters into a 2D grid while
+                preserving their neighborhood structure. During training, we further enforce local smoothness between the sorted parameters in the grid. The
+                uncompressed Gaussians use the same structure as 3DGS, ensuring a seamless integration with established renderers. Our method achieves a
+                reduction factor of 17x to 42x in size for complex scenes with no increase in training time, marking a substantial leap forward in the domain of
+                3D scene distribution and consumption.
+              </p>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-
-<section class="section hero is-small">
-    <div class="container is-max-desktop">
+    <section class="section hero is-small">
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
-
+          <div class="column is-four-fifths">
             <h2 class="title is-3">Method</h2>
             <div class="content has-text-justified">
-                <p>
-                    An overview of our novel 3DGS training method. During training, we arrange all high dimensional
-                    attributes into multiple 2D grids. Those grids are sorted and a smoothness regularization is
-                    applied. This
-                    creates redundancy which help to compress the 2D grids into small files using off-the-shelf
-                    compression methods.
-                </p>
+              <p>
+                An overview of our novel 3DGS training method. During training, we arrange all high dimensional attributes into multiple 2D grids. Those grids
+                are sorted and a smoothness regularization is applied. This creates redundancy which help to compress the 2D grids into small files using
+                off-the-shelf compression methods.
+              </p>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-
-<section class="hero is-small">
-    <div class="hero-body">
+    <section class="hero is-small">
+      <div class="hero-body">
         <div class="container">
-            <img src="static/images/method.png" alt="MY ALT TEXT"/>
+          <img src="static/images/method.png" alt="MY ALT TEXT" />
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-
-<section class="section hero is-small">
-    <div class="container is-max-desktop">
+    <section class="section hero is-small">
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Results</h2>
 
-                <h2 class="title is-3">Results</h2>
-
-                <div class="content has-text-justified">
-
-                    <p>
-                        Here we render results of scenes in vanilla 3DGS vs. our compression method. You can move the split divider to compare 3DGS on the left and our method on the right of each video.
-                    </p>
-                    <p>
-                        Parts of the scene covered by many cameras (like the front of the truck) look near identical. Other parts (concrete a few steps away from the truck, the background) are seen by fewer cameras. In 3DGS, this produces highly view-dependent small details and floaters. Through the local neighbor smoothness, our method generalizes better for these sparser parts of the scene. The result is overall smoother, and more pleaseant to look at, also removing many of the distracting floaters.
-                    </p>    
-
-
-                </div>
+            <div class="content has-text-justified">
+              <p>
+                Here we render results of scenes in vanilla 3DGS vs. our compression method. You can move the split divider to compare 3DGS on the left and our
+                method on the right of each video.
+              </p>
+              <p>
+                Parts of the scene covered by many cameras (like the front of the truck) look near identical. Other parts (concrete a few steps away from the
+                truck, the background) are seen by fewer cameras. In 3DGS, this produces highly view-dependent small details and floaters. Through the local
+                neighbor smoothness, our method generalizes better for these sparser parts of the scene. The result is overall smoother, and more pleaseant to
+                look at, also removing many of the distracting floaters.
+              </p>
             </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-
-<section class="hero is-small">
-    <div class="hero-body">
+    <section class="hero is-small">
+      <div class="hero-body">
         <div class="container">
+          <div class="content has-text-justified">
+            <h2 class="title is-5">Truck (Tanks &amp; Temples dataset)</h2>
+            <table>
+              <tr>
+                <th style="text-align: left; width: 50%">3DGS<span style="float: right">Ours</span></th>
+                <th style="text-align: left; width: 50%">3DGS w/o SH<span style="float: right">Ours w/o SH</span></th>
+              </tr>
 
+              <tr>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/truck_compare.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">639.7 MB<span style="float: right"> 28.8 MB</span></p>
+                </td>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/truck_compare_nosh.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">174.0 MB<span style="float: right">11.8 MB</span></p>
+                </td>
+              </tr>
+            </table>
+
+            <h2 class="title is-5">Flowers (Mip-NeRF 360 dataset)</h2>
+            <table>
+              <tr>
+                <th style="text-align: left; width: 50%">3DGS<span style="float: right">Ours</span></th>
+                <th style="text-align: left; width: 50%">3DGS w/o SH<span style="float: right">Ours w/o SH</span></th>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/flowers_compare.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">848.1 MB<span style="float: right">55.0 MB</span></p>
+                </td>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/flowers_compare_nosh.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">232.8 MB<span style="float: right">22.2 MB</span></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <h2 class="title is-3">Comparison with other 3D scene representations</h2>
+          <div class="content has-text-justified">
             <div class="content has-text-justified">
-
-                <h2 class="title is-5">Truck (Tanks &amp; Temples dataset)</h2>
-                <table>
-                    <tr>
-                        <th style="text-align: left; width: 50%;">3DGS<span style="float: right;">Ours</span>
-                        </th>
-                        <th style="text-align: left; width: 50%;">3DGS w/o SH<span style="float: right;">Ours
-									w/o SH</span>
-                        </th>
-                    </tr>
-
-                    <tr>
-                        <td>
-                            <div class="video-container">
-                                <video class="sourceVideo" src="static/videos_eccv/truck_compare.mp4"
-                                       style="display: none;" muted loop></video>
-                                <canvas class="videoCanvas"></canvas>
-                            </div>
-                            <p style="text-align: left;">639.7 MB<span style="float: right;"> 28.8 MB</span></p>
-                        </td>
-                        <td>
-                            <div class="video-container">
-                                <video class="sourceVideo" src="static/videos_eccv/truck_compare_nosh.mp4"
-                                       style="display: none;" muted loop></video>
-                                <canvas class="videoCanvas"></canvas>
-                            </div>
-                            <p style="text-align: left;">174.0 MB<span style="float: right;">11.8 MB</span></p>
-                        </td>
-                    </tr>
-                </table>
-
-                    <h2 class="title is-5">Flowers (Mip-NeRF 360 dataset)</h2>
-                <table>
-
-                    <tr>
-                        <th style="text-align: left; width: 50%;">3DGS<span style="float: right;">Ours</span>
-                        </th>
-                        <th style="text-align: left; width: 50%;">3DGS w/o SH<span style="float: right;">Ours
-                                    w/o SH</span>
-                        </th>
-                    </tr>
-
-
-                    <tr>
-                        <td>
-                            <div class="video-container">
-                                <video class="sourceVideo" src="static/videos_eccv/flowers_compare.mp4"
-                                       style="display: none;" muted loop></video>
-                                <canvas class="videoCanvas"></canvas>
-                            </div>
-                            <p style="text-align: left;">848.1 MB<span style="float: right;">55.0 MB</span></p>
-                        </td>
-                        <td>
-                            <div class="video-container">
-                                <video class="sourceVideo" src="static/videos_eccv/flowers_compare_nosh.mp4"
-                                       style="display: none;" muted loop></video>
-                                <canvas class="videoCanvas"></canvas>
-                            </div>
-                            <p style="text-align: left;">232.8 MB<span style="float: right;">22.2 MB</span></p>
-                        </td>
-                    </tr>
-                </table>
-
+              <strong>Quantitative results:</strong> Our method significantly outperforms the default 3D Gaussian Splatting (3DGS) and prior NeRF-based 3D
+              reconstruction methods in terms of storage size and rendering efficiency. We achieve a <b>reduction in storage size</b> by a factor of
+              <b>17x to 42x</b>, depending on the dataset, with the most notable reduction being 41.6x on the Deep Blending dataset. Deactivating spherical
+              harmonics during training further enhances this reduction to 127x over vanilla 3DGS, while also improving PSNR metrics. Our approach maintains
+              competitive visual quality metrics (PSNR and L-PIPS) compared to Mip-NeRF360 and VQ-TensoRF but allows for real-time rendering and significantly
+              faster training, approximately 10 to 30 minutes per scene. Additionally, our optimized method renders scenes more quickly, achieving 515 fps
+              compared to 385 fps for the vanilla 'Truck' dataset model on the same GPU, while also displaying better visual quality, compared to vanilla 3DGS.
             </div>
-
-            <h2 class="title is-3">Comparison with other 3D scene representations</h2>
-            <div class="content has-text-justified">
-
-
-            <div class="content has-text-justified">
-                <strong>Quantitative results:</strong> Our method significantly outperforms the default 3D Gaussian Splatting (3DGS) and prior NeRF-based 3D reconstruction methods in terms of storage size and rendering efficiency. We achieve a <b>reduction in storage size</b> by a factor of <b>17x to 42x</b>, depending on the dataset, with the most notable reduction being 41.6x on the Deep Blending dataset. Deactivating spherical harmonics during training further enhances this reduction to 127x over vanilla 3DGS, while also improving PSNR metrics. Our approach maintains competitive visual quality metrics (PSNR and L-PIPS) compared to Mip-NeRF360 and VQ-TensoRF but allows for real-time rendering and significantly faster training, approximately 10 to 30 minutes per scene. Additionally, our optimized method renders scenes more quickly, achieving 515 fps compared to 385 fps for the vanilla 'Truck' dataset model on the same GPU, while also displaying better visual quality, compared to vanilla 3DGS.
-            </div>
-                <img style="display: block; margin-left: auto; margin-right: auto; width: 90%;"
-                     src="static/images/table.png" alt="MY ALT TEXT"/>
-            </div>
+            <img style="display: block; margin-left: auto; margin-right: auto; width: 90%" src="static/images/table.png" alt="MY ALT TEXT" />
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<section class="section hero is-small">
-    <div class="container is-max-desktop">
+    <section class="section hero is-small">
+      <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
-            <div class="column is-four-fifths">
+          <div class="column is-four-fifths">
             <h2 class="title is-3">Comparison with other 3DGS compression methods</h2>
 
             <div class="content has-text-justified">
-                <p>
-                    Multiple concurrent methods have been developed for compressing 3D Gaussian splats. Commonly, these methods aim to reduce the number of Gaussians needed for the scene and apply quantized vector compression. Unlike other approaches that utilize codebooks or hash grids for vector coding, our method is unique in organizing the Gaussians into locally smooth 2D grids during training.
-                </p>
-                <p>
-                    This grid organization during training enables the use of standard image compression techniques to code the attributes. This simplifies decoding: one <b>simply decompresses</b> the grid attribute images and applies a rescaling. Each pixel from the coded images then corresponds to a set of Gaussian splatting attributes, which can be rendered with any standard 3DGS render engine.
-                </p>
-                <p>
-                    As of July 2024, <b>our method</b> (<i>Morgenstern et al.</i>) achieves the <b>highest quality</b> for the compared datasets, <b>second only in size</b> to the <a href="https://yihangchen-ee.github.io/project_hac/">HAC</a> method, also presented at ECCV 2024.
-                </p>
-                <p>
-                    We invite you to explore other methods for compressing Gaussian splats and compare their approaches in this survey:
-                </p>
+              <p>
+                Multiple concurrent methods have been developed for compressing 3D Gaussian splats. Commonly, these methods aim to reduce the number of
+                Gaussians needed for the scene and apply quantized vector compression. Unlike other approaches that utilize codebooks or hash grids for vector
+                coding, our method is unique in organizing the Gaussians into locally smooth 2D grids during training.
+              </p>
+              <p>
+                This grid organization during training enables the use of standard image compression techniques to code the attributes. This simplifies
+                decoding: one <b>simply decompresses</b> the grid attribute images and applies a rescaling. Each pixel from the coded images then corresponds to
+                a set of Gaussian splatting attributes, which can be rendered with any standard 3DGS render engine.
+              </p>
+              <p>
+                As of July 2024, <b>our method</b> (<i>Morgenstern et al.</i>) achieves the <b>highest quality</b> for the compared datasets,
+                <b>second only in size</b> to the
+                <a href="https://yihangchen-ee.github.io/project_hac/">HAC</a>
+                method, also presented at ECCV 2024.
+              </p>
+              <p>We invite you to explore other methods for compressing Gaussian splats and compare their approaches in this survey:</p>
             </div>
 
             <div class="container is-max-desktop">
-                <div class="columns is-centered has-text-centered">
-                    <div class="column is-four-fifths">
-
-
-                <div class="columns">
+              <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                  <div class="columns">
                     <div class="column is-one-third">
-                        <img
-                            src="static/images/survey-teaser.png"
-                            alt=""
-                        />
+                      <img src="static/images/survey-teaser.png" alt="" />
                     </div>
-                    <div
-                        class="column is-two-thirds has-text-justified"
-                    >
-                        <span class="link-block">
-                            <a
-                                href="https://survey.3dgs.zip/"
-                                target="_blank"
-                                class="external-link button is-normal is-rounded is-dark"
-                            >
-                                <span class="icon">
-                                    <i class="fas fa-chart-line"></i>
-                                </span>
-                                <span>Survey Page</span>
-                            </a>
-                            <a
-                                href="https://github.com/w-m/3dgs-compression-survey"
-                                target="_blank"
-                                class="external-link button is-normal is-rounded is-dark"
-                            >
-                                <span class="icon">
-                                    <i class="fab fa-github"></i>
-                                </span>
-                                <span>Survey Code & Data</span>
-                            </a>
-                        </span>
-                        <div>
-                            <b>3dgs.zip: A survey on 3D Gaussian Splatting
-                            Compression Methods</b>: We're collecting
-                            results and info on methods that reduce the
-                            storage size of 3D Gaussian splatting
-                            scenes. Contributions welcome!
-                        </div>
+                    <div class="column is-two-thirds has-text-justified">
+                      <span class="link-block">
+                        <a href="https://survey.3dgs.zip/" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fas fa-chart-line"></i>
+                          </span>
+                          <span>Survey Page</span>
+                        </a>
+                        <a href="https://github.com/w-m/3dgs-compression-survey" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fab fa-github"></i>
+                          </span>
+                          <span>Survey Code & Data</span>
+                        </a>
+                      </span>
+                      <div>
+                        <b>3dgs.zip: A survey on 3D Gaussian Splatting Compression Methods</b>: We're collecting results and info on methods that reduce the
+                        storage size of 3D Gaussian splatting scenes. Contributions welcome!
+                      </div>
                     </div>
-                    </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-</div>
-    </div>
-</section>
+      </div>
+    </section>
 
-
-
-<!--BibTex citation -->
-<section class="section" id="BibTeX">
-    <div class="container is-max-desktop content">
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
         <h2 class="title">BibTeX</h2>
         <pre><code>@article{morgenstern2023compact,
   title={Compact 3D Scene Representation via Self-Organizing Gaussian Grids},
@@ -432,38 +411,33 @@
   journal={arXiv preprint arXiv:2312.13299},
   year={2023}
 }</code></pre>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!--End BibTex citation -->
-<footer class="footer">
-    <div class="container">
+    <!--End BibTex citation -->
+    <footer class="footer">
+      <div class="container">
         <div class="columns is-centered">
-            <div class="column is-8">
-                <div class="content">
-                    <p>
-                        This page was built using the
-                        <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
-                           target="_blank">Academic
-                            Project
-                            Page Template</a>. <br/>
-                        This website is licensed under a
-                        <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"
-                           target="_blank">Creative
-                            Commons
-                            Attribution-ShareAlike 4.0 International
-                            License</a>.
-                    </p>
-                </div>
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page was built using the
+                <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>. <br />
+                This website is licensed under a
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+                  >Creative Commons Attribution-ShareAlike 4.0 International License</a
+                >.
+              </p>
             </div>
+          </div>
         </div>
-    </div>
-</footer>
+      </div>
+    </footer>
 
-<!-- Statcounter tracking code -->
+    <!-- Statcounter tracking code -->
 
-<!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
 
-<!-- End of Statcounter Code -->
-</body>
+    <!-- End of Statcounter Code -->
+  </body>
 </html>
