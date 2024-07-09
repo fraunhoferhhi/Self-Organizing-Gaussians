@@ -240,15 +240,74 @@
 <section class="hero is-small">
     <div class="hero-body">
         <div class="container">
-            <h2 class="title is-3">Concurrent Methods</h2>
+            <h2 class="title is-3">Comparison with concurrent methods</h2>
+
             <div class="content has-text-justified">
-                Check out our new Gaussian splatting compression survey page, where we regularly update all current
-                compression methods and give brief method overviews:
-                <a href="http://w-m.github.io/3dgs-compression-survey/">Gaussian Compression Survey: 3DGS.zip</a>
+                Multiple concurrent methods have been developed for compressing 3D Gaussian splats. Commonly, these methods aim to reduce the number of Gaussians needed for the scene and apply quantized vector compression. Unlike other approaches that utilize codebooks or hash grids for vector coding, our method is unique in organizing the Gaussians into locally smooth 2D grids during training.
+            </div>
+            <div class="content has-text-justified">
+                This grid organization during training enables the use of standard image compression techniques to code the attributes. This simplifies decoding: one simply decompresses the grid attribute images and applies a rescaling. Each pixel from the coded images then corresponds to a set of Gaussian splatting attributes, which can be rendered with any standard 3DGS render engine.
+            </div>
+            <div class="content has-text-justified">
+                As of July 2024, our method (<i>Morgenstern et al.</i>) achieves the highest quality for the compared datasets, second only in size to the <a href="https://yihangchen-ee.github.io/project_hac/">HAC</a> method, also presented at ECCV 2024.
+            </div>
+            <div class="content has-text-justified">
+                We invite you to explore other methods for compressing Gaussian splats and compare their approaches in this survey:
+            </div>
+
+            <div class="container is-max-desktop">
+                <div class="columns is-centered has-text-centered">
+                    <div class="column is-four-fifths">
+
+
+                <div class="columns">
+                    <div class="column is-one-third">
+                        <img
+                            src="static/images/survey-teaser.png"
+                            alt=""
+                        />
+                    </div>
+                    <div
+                        class="column is-two-thirds has-text-justified"
+                    >
+                        <span class="link-block">
+                            <a
+                                href="https://survey.3dgs.zip/"
+                                target="_blank"
+                                class="external-link button is-normal is-rounded is-dark"
+                            >
+                                <span class="icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </span>
+                                <span>Survey Page</span>
+                            </a>
+                            <a
+                                href="https://github.com/w-m/3dgs-compression-survey"
+                                target="_blank"
+                                class="external-link button is-normal is-rounded is-dark"
+                            >
+                                <span class="icon">
+                                    <i class="fab fa-github"></i>
+                                </span>
+                                <span>Survey Code & Data</span>
+                            </a>
+                        </span>
+                        <div>
+                            <b>3dgs.zip: A survey on 3D Gaussian Splatting
+                            Compression Methods</b>: We're collecting
+                            results and info on methods that reduce the
+                            storage size of 3D Gaussian splatting
+                            scenes. Contributions welcome!
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+</div>
+    </div>
 </section>
+
 
 
 <!--BibTex citation -->
