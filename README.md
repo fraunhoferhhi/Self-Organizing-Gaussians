@@ -23,12 +23,15 @@ The integration of the sorting, the smoothness regularization and the compressio
 
 ## Cloning the Repository
 
-The repository contains submodules, thus please check it out with 
+The repository contains submodules, thus please check it out with
+
 ```shell
 # SSH
 git clone git@github.com:fraunhoferhhi/Self-Organizing-Gaussians.git --recursive
 ```
+
 or
+
 ```shell
 # HTTPS
 git clone https://github.com/fraunhoferhhi/Self-Organizing-Gaussians.git --recursive
@@ -64,24 +67,26 @@ python train.py \
 
 The parameter configurations can be overriden in the launch as shown (using [Hydra](https://hydra.cc/)).
 
-
 ## Differences with graphdeco-inria/gaussian-splatting
 
 Code differences can be found in this diff: https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/pull/1/files
 
 ### Usage
+
 - different command-line interface for train.py (using Hydra)
 - wandb.ai used for logging
 
 ### Code extensions
+
 - post-training quantization, compression/decompression
 - xyz log activation (gaussian_model.py)
 - grid sorting, neighbor loss (gaussian_model.py)
 - option to disable spherical harmonics
 
-
 ## Updates
 
+- 2024-07-09: Project website updated with TLDR, contributions, insights and comparison to concurrent methods
+- 2024-07-01: Our work was accepted at **ECCV 2024** 🥳
 - 2024-06-13: Training code available
 - 2024-05-14: Improved compression scores! New results for paper v2 available on the [project website](https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/)
 - 2024-05-02: Revised [paper v2](https://arxiv.org/pdf/2312.13299) on arXiv: Added compression of spherical harmonics, updated compression method with improved results (all attributes compressed with JPEG XL now), added qualitative comparison of additional scenes, moved compression explanation and comparison to main paper, added comparison with "Making Gaussian Splats smaller".
