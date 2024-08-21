@@ -203,6 +203,7 @@ class SplatvizNetwork:
             grid_image = gaussians.get_features_dc.detach().squeeze()
         else:
             grid_image = gaussians._features_dc.clone().detach().squeeze()
+        grid_image = self.clamp_to_two_std_and_squash_to_0_1(grid_image)
         grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
         return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
@@ -232,7 +233,7 @@ class SplatvizNetwork:
         return grid_image.reshape(grid_side_len, grid_side_len, 1)
 
     def clamp_to_two_std_and_squash_to_0_1(self, grid_image):
-        mean, std = grid_image.mean(), grid_image.std()
+        mean, std = grid_image.mean(dim=0), grid_image.std(dim=0)
         grid_image -= mean
         grid_image.clamp(min=-2 * std, max=2 * std)
         grid_image += 2 * std
