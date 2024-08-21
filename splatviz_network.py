@@ -56,21 +56,23 @@ class SplatvizNetwork:
                 break
         return json.loads(message.decode("utf-8"))
 
-    def send(self, rendered_image, training_stats, grid_image):
+    def send(
+        self,
+        rendered_image: torch.Tensor,
+        training_stats: dict,
+        grid_image: torch.Tensor,
+        activated: bool,
+    ):
         """Send a training snapshot to the client.
 
         Args:
             net_image (torch.Tensor): Rendering of the requested view on the current scene.
             training_stats (dict): Some statistics about the current training state.
             grid_image (torch.Tensor): Visualization of the requested attributes in the current sorted grid. The values of the tensor have to be between 0 and 1.
+            activated (bool): Whether the visualized grid attribute is activated.
         """
         net_image_bytes = memoryview(
-            (torch.clamp(rendered_image, min=0, max=1.0) * 255)
-            .byte()
-            .permute(1, 2, 0)
-            .contiguous()
-            .cpu()
-            .numpy()
+            (torch.clamp(rendered_image, min=0, max=1.0) * 255).byte().permute(1, 2, 0).contiguous().cpu().numpy()
         )
         self.conn.sendall(net_image_bytes)
 
@@ -82,15 +84,15 @@ class SplatvizNetwork:
             no_grid_bytes = 0
             self.conn.sendall(no_grid_bytes.to_bytes(4, "little"))
         else:
-            net_grid_bytes = memoryview(
-                (grid_image * 255).byte().contiguous().cpu().numpy()
-            )
+            net_grid_bytes = memoryview((grid_image * 255).byte().contiguous().cpu().numpy())
             self.conn.sendall(net_grid_bytes.nbytes.to_bytes(4, "little"))
+            self.conn.sendall(net_grid_bytes)
+
             grid_side_len, channels = grid_image.shape[1:]
             self.conn.sendall(grid_side_len.to_bytes(4, "little"))
             self.conn.sendall(channels.to_bytes(4, "little"))
-            self.conn.sendall(net_grid_bytes)
-            
+            self.conn.sendall(activated.to_bytes(1, "little"))
+
 
     def receive(self):
         message = self.read()
@@ -107,14 +109,10 @@ class SplatvizNetwork:
                 self.do_rot_scale_python = bool(message["rot_scale_python"])
                 self.keep_alive = bool(message["keep_alive"])
                 self.scaling_modifer = message["scaling_modifier"]
-                world_view_transform = torch.reshape(
-                    torch.tensor(message["view_matrix"]), (4, 4)
-                ).cuda()
+                world_view_transform = torch.reshape(torch.tensor(message["view_matrix"]), (4, 4)).cuda()
                 world_view_transform[:, 1] = -world_view_transform[:, 1]
                 world_view_transform[:, 2] = -world_view_transform[:, 2]
-                full_proj_transform = torch.reshape(
-                    torch.tensor(message["view_projection_matrix"]), (4, 4)
-                ).cuda()
+                full_proj_transform = torch.reshape(torch.tensor(message["view_projection_matrix"]), (4, 4)).cuda()
                 full_proj_transform[:, 1] = -full_proj_transform[:, 1]
                 self.custom_cam = MiniCam(
                     width,
@@ -135,9 +133,7 @@ class SplatvizNetwork:
                 traceback.print_exc()
                 raise e
 
-    def render(
-        self, pipe, gaussians, loss, render, background, iteration, opt, config=None
-    ):
+    def render(self, pipe, gaussians, loss, render, background, iteration, opt, config=None):
         if self.conn == None:
             self.try_connect()
         while self.conn != None:
@@ -160,9 +156,7 @@ class SplatvizNetwork:
 
                 if self.custom_cam != None:
                     with torch.no_grad():
-                        net_image = render(
-                            self.custom_cam, gs, pipe, background, self.scaling_modifer
-                        )["render"]
+                        net_image = render(self.custom_cam, gs, pipe, background, self.scaling_modifer)["render"]
 
                 training_stats = {
                     "loss": loss,
@@ -175,16 +169,15 @@ class SplatvizNetwork:
                 }
 
                 grid_image = None
-                if (
-                    "sorting_enabled" in opt
-                    and opt.sorting_enabled
-                    and self.grid_attr is not None
-                ):
-                    grid_image = getattr(self, f"get{self.grid_attr}_grid")(
-                        gaussians, config.neighbor_loss.activated
-                    )
+                if "sorting_enabled" in opt and opt.sorting_enabled and self.grid_attr is not None:
+                    grid_image = getattr(self, f"get{self.grid_attr}_grid")(gaussians, config.neighbor_loss.activated)
 
-                self.send(net_image, training_stats, grid_image)
+                self.send(
+                    net_image,
+                    training_stats,
+                    grid_image,
+                    config.neighbor_loss.activated,
+                )
                 if (
                     self.do_training
                     and ((iteration < int(opt.iterations)) or not self.keep_alive)
@@ -206,25 +199,36 @@ class SplatvizNetwork:
         return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
     def get_features_dc_grid(self, gaussians: GaussianModel, activated: bool):
-        pass
+        if activated:
+            grid_image = gaussians.get_features_dc.detach().squeeze()
+        else:
+            grid_image = gaussians._features_dc.clone().detach().squeeze()
+        grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
+        return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
     def get_features_rest_grid(self, gaussians: GaussianModel, activated: bool):
         pass
 
     def get_scaling_grid(self, gaussians: GaussianModel, activated: bool):
-        pass
+        if activated:
+            grid_image = gaussians.get_scaling.detach()
+            cut_off = torch.quantile(grid_image, 0.95)
+            grid_image.clamp(max=cut_off)
+            gird_image /= cut_off
+        else:
+            grid_image = self.clamp_to_two_std_and_squash_to_0_1(gaussians._scaling.clone().detach())
+        grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
+        return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
     def get_rotation_grid(self, gaussians: GaussianModel, activated: bool):
         pass
 
     def get_opacity_grid(self, gaussians: GaussianModel, activated: bool):
-        grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
         if activated:
             grid_image = gaussians.get_opacity.detach()
         else:
             grid_image = self.clamp_to_two_std_and_squash_to_0_1(gaussians._opacity.clone().detach())
-            if grid_image.requires_grad:
-                print("Opacity grid requires grad")
+        grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
         return grid_image.reshape(grid_side_len, grid_side_len, 1)
 
     def clamp_to_two_std_and_squash_to_0_1(self, grid_image):
