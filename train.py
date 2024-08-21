@@ -13,7 +13,9 @@ import torch
 import os
 import hydra
 
+
 from omegaconf import DictConfig, OmegaConf
+from utils.dict import EasyDict
 from tqdm import tqdm
 from copy import deepcopy
 from lpipsPyTorch import lpips
@@ -31,6 +33,8 @@ from training_viewer import TrainingViewer
 
 from compression.compression_exp import run_compressions, run_decompressions
 from compression.decompress import decompress_all_to_ply
+
+from splatviz_network import SplatvizNetwork
 
 
 def training(cfg):
@@ -80,21 +84,16 @@ def training(cfg):
     else:
         progress_bar = tqdm(range(first_iter, cfg.optimization.iterations), desc="Training progress")
     first_iter += 1
+
+    network = SplatvizNetwork()
+    opt = EasyDict(cfg.optimization)
+    for key, value in cfg.sorting.items():
+        if key == "weights":
+            for subkey, subvalue in value.items():
+                opt[f"sorting_{key}_{subkey}"] = subvalue
+        opt[f"sorting_{key}"] = value
+
     for iteration in range(first_iter, cfg.optimization.iterations + 1):
-        if network_gui.conn == None:
-            network_gui.try_connect()
-        while network_gui.conn != None:
-            try:
-                net_image_bytes = None
-                custom_cam, do_training, cfg.pipeline.convert_SHs_python, cfg.pipeline.compute_cov3D_python, keep_alive, scaling_modifer = network_gui.receive()
-                if custom_cam != None:
-                    net_image = render(custom_cam, gaussians, cfg.pipeline, background, scaling_modifer)["render"]
-                    net_image_bytes = memoryview((torch.clamp(net_image, min=0, max=1.0) * 255).byte().permute(1, 2, 0).contiguous().cpu().numpy())
-                network_gui.send(net_image_bytes, cfg.dataset.source_path)
-                if do_training and ((iteration < int(cfg.optimization.iterations)) or not keep_alive):
-                    break
-            except Exception as e:
-                network_gui.conn = None
 
         iter_start.record()
 
@@ -245,6 +244,8 @@ def training(cfg):
             if (iteration in cfg.run.checkpoint_iterations):
                 print("\n[ITER {}] Saving Checkpoint".format(iteration))
                 torch.save((gaussians.capture(), iteration), scene.model_path + "/chkpnt" + str(iteration) + ".pth")
+        
+        network.render(EasyDict(cfg.pipeline), gaussians, ema_loss_for_log, render, background, iteration, opt, cfg)
 
 
 def training_report(cfg, iteration, scene, gaussians, renderArgs, log_name, log_GT=True):
@@ -332,7 +333,6 @@ def main(cfg: DictConfig):
 
 
     # Start GUI server, configure and run training
-    network_gui.init(cfg.gui_server.ip, cfg.gui_server.port)
     torch.autograd.set_detect_anomaly(cfg.debug.detect_anomaly)
     training(cfg)
 

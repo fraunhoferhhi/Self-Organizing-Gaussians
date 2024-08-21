@@ -41,7 +41,15 @@ git clone https://github.com/fraunhoferhhi/Self-Organizing-Gaussians.git --recur
 
 The code is using a few additional Python packages on top of graphdeco-inria/gaussian-splatting. We provide an extended environment.yml:
 
-Installation with [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
+Installation with [conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html):
+```
+conda env create --file environment.yml --yes
+conda activate sogs
+```
+
+[Since conda 23.10.0 libmamba is the default solver](https://conda.org/blog/2023-11-06-conda-23-10-0-release/). But if you have an older installation, [make sure that the libmamba solver is set](https://www.anaconda.com/blog/a-faster-conda-for-a-growing-community).   
+
+Alternative installation with [micromamba](https://mamba.readthedocs.io/en/latest/installation/micromamba-installation.html):
 
 ```shell
 micromamba env create --file environment.yml --channel-priority flexible -y
@@ -54,7 +62,7 @@ Download a dataset, e.g. [T&T](https://repo-sam.inria.fr/fungraph/3d-gaussian-sp
 
 The train.py script expects a name to a .yaml config file in the [config/](config/) folder. All parameters for the run are by default loaded from the yaml file. An example launch file can be found in .vscode/launch.json, for launching from Visual Studio Code.
 
-Example:
+Example in bash:
 
 ```shell
 python train.py \
@@ -62,6 +70,16 @@ python train.py \
   hydra.run.dir=/data/output/${now:%Y-%m-%d}/${now:%H-%M-%S}-${run.name} \
   dataset.source_path=/data/gaussian_splatting/tandt_db/tandt/truck \
   run.no_progress_bar=false \
+  run.name=vs-code-debug
+```
+
+Example in powershell:
+```shell
+python train.py `
+  --config-name ours_q_sh_local_test `
+  hydra.run.dir=/data/output/${now:%Y-%m-%d}/${now:%H-%M-%S}-${run.name} `
+  dataset.source_path="absolute\path\to\your\data\tandt_db\tandt\truck" `
+  run.no_progress_bar=false `
   run.name=vs-code-debug
 ```
 
