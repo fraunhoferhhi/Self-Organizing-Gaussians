@@ -3,6 +3,7 @@ from typing import Any
 
 import torch
 import numpy as np
+from scipy.spatial.transform import Rotation
 import traceback
 import socket
 import json
@@ -129,6 +130,8 @@ class SplatvizNetwork:
                 self.stop_at_value = message["stop_at_value"]
                 self.single_training_step = message["single_training_step"]
                 self.grid_attr = message["grid_attr"]
+                self.grid_sh_index = message["grid_sh_index"]
+
             except Exception as e:
                 traceback.print_exc()
                 raise e
@@ -199,37 +202,57 @@ class SplatvizNetwork:
         return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
     def get_features_dc_grid(self, gaussians: GaussianModel, activated: bool):
-        if activated:
-            grid_image = gaussians.get_features_dc.detach().squeeze()
-        else:
-            grid_image = gaussians._features_dc.clone().detach().squeeze()
+        grid_image = gaussians._features_dc.clone().detach().squeeze()
         grid_image = self.clamp_to_two_std_and_squash_to_0_1(grid_image)
-        grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
+        grid_side_len = int(np.sqrt(grid_image.shape[0]))
         return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
     def get_features_rest_grid(self, gaussians: GaussianModel, activated: bool):
-        pass
+        grid_image = gaussians._features_rest[:, self.grid_sh_index, :].clone().detach().squeeze()
+        grid_image = self.clamp_to_two_std_and_squash_to_0_1(grid_image)
+        grid_side_len = int(np.sqrt(grid_image.shape[0]))
+        return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
     def get_scaling_grid(self, gaussians: GaussianModel, activated: bool):
         if activated:
             grid_image = gaussians.get_scaling.detach()
             cut_off = torch.quantile(grid_image, 0.95)
             grid_image.clamp(max=cut_off)
-            gird_image /= cut_off
+            grid_image /= cut_off
         else:
             grid_image = self.clamp_to_two_std_and_squash_to_0_1(gaussians._scaling.clone().detach())
-        grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
+        grid_side_len = int(np.sqrt(grid_image.shape[0]))
         return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
-    def get_rotation_grid(self, gaussians: GaussianModel, activated: bool):
-        pass
+    def get_rotation_rgba_grid(self, gaussians: GaussianModel, activated: bool):
+        grid_image = gaussians.get_rotation.detach()
+        grid_side_len = int(np.sqrt(grid_image.shape[0]))
+        return grid_image.reshape(grid_side_len, grid_side_len, 4)[:,:, (1,2,3,0)]
+    
+    def get_rotation_euler_form_rgba_grid(self, gaussians: GaussianModel, activated: bool):
+        grid_image = gaussians.get_rotation.detach()
+        grid_side_len = int(np.sqrt(grid_image.shape[0]))
+        grid_image = grid_image.reshape(grid_side_len, grid_side_len, 4)[:,:, (1, 2, 3, 0)]
+        grid_image[:,:,3] = grid_image[:,:,3].clamp(min= -1 + 1e-6, max=1 - 1e-6)
+        grid_image[:,:,:3] /= torch.sqrt(1 - grid_image[:,:,3]**2).unsqueeze(-1)
+        grid_image[:,:,3] = 1 - grid_image[:,:,3].arccos() / torch.pi
+        return grid_image
+    
+    def get_rotation_euler_angles_rgb_grid(self, gaussians: GaussianModel, activated: bool):
+        grid_image = gaussians.get_rotation.detach().cpu()
+        grid_image = torch.from_numpy(Rotation.from_quat(grid_image, scalar_first=True).as_euler("zxz"))
+        grid_image[:, 0] = grid_image[:, 0] / (2 * np.pi) + 0.5
+        grid_image[:, 1] = grid_image[:, 1] / np.pi + 0.5
+        grid_image[:, 2] = grid_image[:, 2] / (2 * np.pi) + 0.5
+        grid_side_len = int(np.sqrt(grid_image.shape[0]))
+        return grid_image.reshape(grid_side_len, grid_side_len, 3)
 
     def get_opacity_grid(self, gaussians: GaussianModel, activated: bool):
         if activated:
             grid_image = gaussians.get_opacity.detach()
         else:
             grid_image = self.clamp_to_two_std_and_squash_to_0_1(gaussians._opacity.clone().detach())
-        grid_side_len = int(np.sqrt(gaussians._opacity.shape[0]))
+        grid_side_len = int(np.sqrt(grid_image.shape[0]))
         return grid_image.reshape(grid_side_len, grid_side_len, 1)
 
     def clamp_to_two_std_and_squash_to_0_1(self, grid_image):
