@@ -99,6 +99,8 @@ Code differences can be found in this diff: https://github.com/fraunhoferhhi/Sel
 
 ## Updates
 
+- 2024-09-16: Script to compute per-scene metrics from uploaded models (see *Pre-Trained Models & Evaluation*). This fixes issues in the metric computation, previously done from Weights & Biases runs: *Dr Johnson* now correctly attributed to DeepBlending dataset (was: *T&T*); Quality loss from quantization and compression losses correctly incorporated.
+- 2024-08-22: Released pre-trained, [compressed scenes](https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/releases/tag/eccv-2024-data)
 - 2024-07-09: Project website updated with TLDR, contributions, insights and comparison to concurrent methods
 - 2024-07-01: Our work was accepted at **ECCV 2024** 🥳
 - 2024-06-13: Training code available
