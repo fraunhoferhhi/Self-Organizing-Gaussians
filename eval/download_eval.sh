@@ -138,7 +138,7 @@ DATASET1_COMPRESSION_DIR="jxl_quant_sh"
 # ECCV w/o SH
 DATASET2_URL="https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/releases/download/eccv-2024-data/Scenes_SOGS_ECCV_without_SH.zip"
 DATASET2_SUBDIR="results_SOGS_ECCV/without_SH"
-DATASET2_SUBMETHOD="w/o SH"
+DATASET2_SUBMETHOD=" w/o SH"
 DATASET2_COMPRESSION_DIR="jxl_quant"
 
 process_dataset "$DATASET1_URL" "$DATASET1_SUBDIR" "$DATASET1_SUBMETHOD" "$DATASET1_COMPRESSION_DIR"
