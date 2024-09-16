@@ -111,6 +111,7 @@ process_dataset() {
           --model_path "${COMPRESSED_MODEL_PATH}/decompressed_model" \
           --skip_train \
           --eval \
+          --data_device cuda \
           --disable_xyz_log_activation
 
         echo "  Computing metrics for $DATASET_SCENE"
