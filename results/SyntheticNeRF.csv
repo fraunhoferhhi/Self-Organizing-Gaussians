@@ -1,3 +1,0 @@
-Submethod,PSNR,SSIM,LPIPS,Size [Bytes]
-Baseline,33.70,0.969,0.031,4299161
- w/o SH,31.75,0.961,0.040,2097152

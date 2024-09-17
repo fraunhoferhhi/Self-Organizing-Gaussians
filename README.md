@@ -67,6 +67,20 @@ python train.py \
 
 The parameter configurations can be overriden in the launch as shown (using [Hydra](https://hydra.cc/)).
 
+## Pre-Trained Models & Evaluation
+
+Trained and compressed scenes are available for download in the [ECCV 2024 release](https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/releases/tag/eccv-2024-data).
+
+The script at [eval/download_eval.sh](https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/blob/main/eval/download_eval.sh) will automatically:
+* download the pre-trained scenes with and without spherical harmonics
+* measure size on disk and number of Gaussians of the compressed scenes
+* decompress the scenes into .ply
+* render the test images for each scene, using the original 3DGS code
+* compute the metrics (PSNR, SSIM, LPIPS) for all test images
+* gather the results in .csv, in the format of the [3DGS compression survey](https://w-m.github.io/3dgs-compression-survey/)
+
+The evaluation results can be found in [results/](https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/blob/main/results/).
+
 ## Differences with graphdeco-inria/gaussian-splatting
 
 Code differences can be found in this diff: https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/pull/1/files
@@ -85,6 +99,8 @@ Code differences can be found in this diff: https://github.com/fraunhoferhhi/Sel
 
 ## Updates
 
+- 2024-09-16: Script to compute per-scene metrics from uploaded models (see *Pre-Trained Models & Evaluation*). This fixes issues in the metric computation, previously done from Weights & Biases runs: *Dr Johnson* now correctly attributed to DeepBlending dataset (was: *T&T*); Quality loss from quantization and compression losses correctly incorporated.
+- 2024-08-22: Released pre-trained, [compressed scenes](https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/releases/tag/eccv-2024-data)
 - 2024-07-09: Project website updated with TLDR, contributions, insights and comparison to concurrent methods
 - 2024-07-01: Our work was accepted at **ECCV 2024** 🥳
 - 2024-06-13: Training code available
