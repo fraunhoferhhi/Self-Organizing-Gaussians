@@ -75,10 +75,10 @@ class Scene:
             self.test_cameras[resolution_scale] = cameraList_from_camInfos(scene_info.test_cameras, resolution_scale, args)
 
         if self.loaded_iter:
-            self.gaussians.load_ply(os.path.join(self.model_path,
-                                                           "point_cloud",
-                                                           "iteration_" + str(self.loaded_iter),
-                                                           "point_cloud.ply"))
+            self.loaded_gaussian_ply = os.path.join(self.model_path, "point_cloud",
+                                                                     "iteration_" + str(self.loaded_iter),
+                                                                      "point_cloud.ply")
+            self.gaussians.load_ply(self.loaded_gaussian_ply)
         else:
             self.gaussians.create_from_pcd(scene_info.point_cloud, self.cameras_extent)
 

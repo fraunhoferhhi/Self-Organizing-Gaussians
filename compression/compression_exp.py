@@ -354,11 +354,15 @@ def compression_exp():
     print(exp_df)
 
     if results_csv:
-        os.makedirs(os.path.dirname(results_csv), exist_ok=True)
+        csv_dirname = os.path.dirname(results_csv)
+        if csv_dirname:
+            os.makedirs(csv_dirname, exist_ok=True)
         exp_df.to_csv(results_csv, index=False)
 
     if results_tex:
-        os.makedirs(os.path.dirname(results_tex), exist_ok=True)
+        tex_dirname = os.path.dirname(results_tex)
+        if tex_dirname:
+            os.makedirs(tex_dirname, exist_ok=True)
         exp_df.to_latex(results_tex, index=False,
                         columns=["name", "psnr", "ssim", "lpips", "size_bytes"],
                         header=["Name", "PSNR $\\uparrow$", "SSIM $\\uparrow$", "LPIPS $\\downarrow$", "Size (MB)"],
