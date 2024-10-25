@@ -45,6 +45,14 @@ def decompress_single_to_ply(compressed_model_path):
         json.dump(metrics_dict, fp, indent=True)
 
 
+def decompress_all_to_ply(compressions_dir):
+
+    for compressed_dir in os.listdir(compressions_dir):
+        if not os.path.isdir(os.path.join(compressions_dir, compressed_dir)):
+            continue
+        decompress_single_to_ply(os.path.join(compressions_dir, compressed_dir))
+
+
 def decompress():
     # example args: --compressed_model output/2023-11-14/14-01-13-blur-15/5/compression/iteration_30000/jxl_man
 
