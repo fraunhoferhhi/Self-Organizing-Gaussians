@@ -36,8 +36,8 @@ def decompress_single_to_ply(compressed_model_path):
     num_gaussians = decompressed_gaussians.get_xyz.shape[0]
     metrics_dict["#Gaussians"] = num_gaussians
 
-    # copy cfg_args file from parent/parent/parent folder to decompressed_model_path
-    model_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(compressed_model_path))))
+    # copy cfg_args file from parent/parent folder to decompressed_model_path
+    model_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.normpath(compressed_model_path))))
     for file_name in ["cfg_args", "cameras.json"]:
         shutil.copyfile(os.path.join(model_dir, file_name), os.path.join(decompressed_model_path, file_name))
 
