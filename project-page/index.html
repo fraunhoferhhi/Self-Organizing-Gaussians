@@ -158,7 +158,7 @@
                 </li>
                 <li>
                   We efficiently
-                  <strong>reduce the storage size by a factor of 17x to 42x</strong>
+                  <strong>reduce the storage size by a factor of 19.9x to 39.5x</strong>
                   while maintaining high visual quality.
                 </li>
               </ol>
@@ -204,7 +204,7 @@
                 To this end, we propose a novel highly parallel algorithm that regularly arranges the high-dimensional Gaussian parameters into a 2D grid while
                 preserving their neighborhood structure. During training, we further enforce local smoothness between the sorted parameters in the grid. The
                 uncompressed Gaussians use the same structure as 3DGS, ensuring a seamless integration with established renderers. Our method achieves a
-                reduction factor of 17x to 42x in size for complex scenes with no increase in training time, marking a substantial leap forward in the domain of
+                reduction factor of 19.9x to 39.5x in size for complex scenes with no increase in training time, marking a substantial leap forward in the domain of
                 3D scene distribution and consumption.
               </p>
             </div>
@@ -328,8 +328,8 @@
               <div class="content has-text-justified">
                 <strong>Quantitative results:</strong> Our method significantly outperforms the default 3D Gaussian Splatting (3DGS) and prior NeRF-based 3D
                 reconstruction methods in terms of storage size and rendering efficiency. We achieve a <b>reduction in storage size</b> by a factor of
-                <b>17x to 42x</b>, depending on the dataset, with the most notable reduction being 41.6x on the Deep Blending dataset. Deactivating spherical
-                harmonics during training further enhances this reduction to 127x over vanilla 3DGS, while also improving PSNR metrics. Our approach maintains
+                <b>19.9x to 39.5x</b>, depending on the dataset, with the most notable reduction being on the Deep Blending dataset. Training our method with
+                spherical harmonics (SH) deactivated yields a reduction factor of 36x to 123x over vanilla 3DGS with a slight reduction in PSNR. Our approach maintains
                 competitive visual quality metrics (PSNR and L-PIPS) compared to Mip-NeRF360 and VQ-TensoRF but allows for real-time rendering and significantly
                 faster training, approximately 10 to 30 minutes per scene. Additionally, our optimized method renders scenes more quickly, achieving 515 fps
                 compared to 385 fps for the vanilla 'Truck' dataset model on the same GPU, while also displaying better visual quality, compared to vanilla
