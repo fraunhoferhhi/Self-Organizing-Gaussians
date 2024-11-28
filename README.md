@@ -97,8 +97,27 @@ Code differences can be found in this diff: https://github.com/fraunhoferhhi/Sel
 - grid sorting, neighbor loss (gaussian_model.py)
 - option to disable spherical harmonics
 
+## Citation
+
+If you use our method in your research, please cite our paper. The paper was presented at ECCV 2024 and [published](https://link.springer.com/chapter/10.1007/978-3-031-73013-9_2#citeas) in the official proceedings in 2025. You can use the following BibTeX entry:
+
+```bibtex
+@InProceedings{morgenstern2024compact,
+  author    = {Wieland Morgenstern and Florian Barthel and Anna Hilsmann and Peter Eisert},
+  title     = {Compact 3D Scene Representation via Self-Organizing Gaussian Grids},
+  booktitle = {Computer Vision -- {ECCV} 2024},
+  year      = {2025},
+  publisher = {Springer Nature Switzerland},
+  address   = {Cham},
+  pages     = {18--34},
+  doi       = {10.1007/978-3-031-73013-9_2},
+  url       = {https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/},
+}
+```
+
 ## Updates
 
+- 2024-11-28: Add [ECCV 2024 Redux Talk](https://www.youtube.com/watch?v=nb5U9xfx7-w), [View Dependent Podcast](https://www.youtube.com/watch?v=Y0O6R0Keywg) and proceedings .bib to project page.
 - 2024-10-30: Update project page with reduction factors from updated metric computation -> 19.9x to 39.5x compression over 3DGS.
 - 2024-09-16: Script to compute per-scene metrics from uploaded models (see *Pre-Trained Models & Evaluation*). This fixes issues in the metric computation, previously done from Weights & Biases runs: *Dr Johnson* now correctly attributed to DeepBlending dataset (was: *T&T*); Quality loss from quantization and compression losses correctly incorporated.
 - 2024-08-22: Released pre-trained, [compressed scenes](https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/releases/tag/eccv-2024-data)
@@ -110,3 +129,4 @@ Code differences can be found in this diff: https://github.com/fraunhoferhhi/Sel
 - 2024-02-22: The code for the sorting algorithm is now available at [fraunhoferhhi/PLAS](https://github.com/fraunhoferhhi/PLAS)
 - 2024-02-21: Video comparisons for different scenes available on the [project website](https://fraunhoferhhi.github.io/Self-Organizing-Gaussians/)
 - 2023-12-19: Preprint available on [arXiv](https://arxiv.org/abs/2312.13299)
+
