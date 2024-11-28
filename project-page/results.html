@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Self-Organizing Gaussians Results</title>
+    <link rel="icon" type="image/x-icon" href="static/images/favicon.ico" />
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet" />
+
+    <link rel="stylesheet" href="static/css/bulma.min.css" />
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css" />
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css" />
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" />
+    <link rel="stylesheet" href="static/css/index.css" />
+    <link rel="stylesheet" href="static/css/style.css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+    <script src="static/js/vidsplit_multi.js"></script>
+  </head>
+
+  <body>
+
+    <section class="section hero is-small">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Self-Organizing Gaussians Results</h2>
+
+            <div class="content has-text-justified">
+              <p>
+                Here we render results of scenes in vanilla 3DGS vs. our compression method. You can move the split divider to compare 3DGS on the left and our
+                method on the right of each video.
+              </p>
+              <p>
+                Parts of the scene covered by many cameras (like the front of the truck) look near identical. Other parts (concrete a few steps away from the
+                truck, the background) are seen by fewer cameras. In 3DGS, this produces highly view-dependent small details and floaters. Through the local
+                neighbor smoothness, our method generalizes better for these sparser parts of the scene. The result is overall smoother, and more pleaseant to
+                look at, also removing many of the distracting floaters.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="hero is-small">
+      <div class="hero-body">
+        <div class="container">
+          <div class="content has-text-justified">
+            <h2 class="title is-5">Truck (Tanks &amp; Temples dataset)</h2>
+            <table>
+              <tr>
+                <th style="text-align: left; width: 50%">3DGS<span style="float: right">Ours</span></th>
+                <th style="text-align: left; width: 50%">3DGS w/o SH<span style="float: right">Ours w/o SH</span></th>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/truck_compare.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">639.7 MB<span style="float: right"> 28.8 MB</span></p>
+                </td>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/truck_compare_nosh.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">174.0 MB<span style="float: right">11.8 MB</span></p>
+                </td>
+              </tr>
+            </table>
+
+            <h2 class="title is-5">Flowers (Mip-NeRF 360 dataset)</h2>
+            <table>
+              <tr>
+                <th style="text-align: left; width: 50%">3DGS<span style="float: right">Ours</span></th>
+                <th style="text-align: left; width: 50%">3DGS w/o SH<span style="float: right">Ours w/o SH</span></th>
+              </tr>
+
+              <tr>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/flowers_compare.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">848.1 MB<span style="float: right">55.0 MB</span></p>
+                </td>
+                <td>
+                  <div class="video-container">
+                    <video class="sourceVideo" src="static/videos_eccv/flowers_compare_nosh.mp4" style="display: none" muted loop></video>
+                    <canvas class="videoCanvas"></canvas>
+                  </div>
+                  <p style="text-align: left">232.8 MB<span style="float: right">22.2 MB</span></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section hero is-small">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+              <h2 class="title is-3">Project Page</h2>
+  
+              <div class="content has-text-justified">
+                <p>
+                  Return to the <a href="index.html">project page</a> for more information on the project.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+  
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+              <p>
+                This page was built using the
+                <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>. <br />
+                This website is licensed under a
+                <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"
+                  >Creative Commons Attribution-ShareAlike 4.0 International License</a
+                >.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Statcounter tracking code -->
+
+    <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+
+    <!-- End of Statcounter Code -->
+  </body>
+</html>
