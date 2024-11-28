@@ -99,7 +99,7 @@ Code differences can be found in this diff: https://github.com/fraunhoferhhi/Sel
 
 ## Citation
 
-If you use our method in your research, please cite our paper. The paper was presented at ECCV 2024 and [published](https://link.springer.com/chapter/10.1007/978-3-031-73013-9_2#citeas) in the official proceedings in 2025. You can use the following BibTeX entry:
+If you use our method in your research, please cite our paper. The paper was presented at ECCV 2024 and [published](https://doi.org/10.1007/978-3-031-73013-9_2) in the official proceedings in 2025. You can use the following BibTeX entry:
 
 ```bibtex
 @InProceedings{morgenstern2024compact,
