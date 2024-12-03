@@ -117,6 +117,7 @@ If you use our method in your research, please cite our paper. The paper was pre
 
 ## Updates
 
+- 2024-12-03: Freezing package versions in environment.yml, particularly imagecodecs. There is a regression in file size with later imagecodecs versions, see [#3](https://github.com/fraunhoferhhi/Self-Organizing-Gaussians/issues/3).
 - 2024-11-28: Add [ECCV 2024 Redux Talk](https://www.youtube.com/watch?v=nb5U9xfx7-w), [View Dependent Podcast](https://www.youtube.com/watch?v=Y0O6R0Keywg) and proceedings .bib to project page.
 - 2024-10-30: Update project page with reduction factors from updated metric computation -> 19.9x to 39.5x compression over 3DGS.
 - 2024-09-16: Script to compute per-scene metrics from uploaded models (see *Pre-Trained Models & Evaluation*). This fixes issues in the metric computation, previously done from Weights & Biases runs: *Dr Johnson* now correctly attributed to DeepBlending dataset (was: *T&T*); Quality loss from quantization and compression losses correctly incorporated.
