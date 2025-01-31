@@ -12,6 +12,8 @@
 from argparse import ArgumentParser, Namespace
 import sys
 import os
+import re
+from omegaconf import OmegaConf
 
 class GroupParams:
     pass
@@ -89,6 +91,15 @@ class OptimizationParams(ParamGroup):
         self.random_background = False
         super().__init__(parser, "Optimization Parameters")
 
+def add_quotes_to_strings(s):
+    # Only wrap model_path, source_path, and images values with quotes if they are not already quoted
+    s = re.sub(r'(?<=model_path=)([^,\s]+)', r'"\1"', s)
+    s = re.sub(r'(?<=source_path=)([^,\s]+)', r'"\1"', s)
+    s = re.sub(r'(?<=images=)([^,\s]+)', r'"\1"', s)
+    return s
+
+
+
 def get_combined_args(parser : ArgumentParser):
     cmdlne_string = sys.argv[1:]
     cfgfile_string = "Namespace()"
@@ -100,13 +111,29 @@ def get_combined_args(parser : ArgumentParser):
         with open(cfgfilepath) as cfg_file:
             print("Config file found: {}".format(cfgfilepath))
             cfgfile_string = cfg_file.read()
-    except TypeError:
+    except FileNotFoundError:
         print("Config file not found at")
         pass
-    args_cfgfile = eval(cfgfile_string)
+    try:
+        args_cfgfile = eval(cfgfile_string)
+    except SyntaxError:
+        # If eval fails due to syntax error, apply quoting and try again
+        cfgfile_string = add_quotes_to_strings(cfgfile_string)
+        args_cfgfile = eval(cfgfile_string)
 
     merged_dict = vars(args_cfgfile).copy()
     for k,v in vars(args_cmdline).items():
         if v != None:
             merged_dict[k] = v
     return Namespace(**merged_dict)
+
+def get_hydra_training_args(model_path):
+    try:
+        cfgfilepath = os.path.join(model_path, "training_config.yaml")
+        print("Looking for config file in", cfgfilepath)
+        with open(cfgfilepath, 'r') as file:
+            print("Config file found: {}".format(cfgfilepath))
+            training_cfg = OmegaConf.load(cfgfilepath)
+            return training_cfg
+    except TypeError:
+        print("Config file not found!")

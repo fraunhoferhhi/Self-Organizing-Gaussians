@@ -1,17 +1,39 @@
-name: gaussian_splatting
+name: sogs
 channels:
   - pytorch
+  - nvidia
   - conda-forge
   - defaults
 dependencies:
-  - cudatoolkit=11.6
-  - plyfile=0.8.1
-  - python=3.7.13
-  - pip=22.3.1
-  - pytorch=1.12.1
-  - torchaudio=0.12.1
-  - torchvision=0.13.1
-  - tqdm
+  - python=3.10
+
+  - cudatoolkit=11.8
+
+  - pytorch=2.4
+  - pytorch-cuda=11.8
+  - torchvision=0.19
+
+  # for compatibility with imagecodecs 2023.9.18
+  - numpy<2
+
+  - click=8.1
+  - hydra-core=1.3
+  - kornia=0.7
+  - opencv=4.10
+  - pandas=2.2
+  - pip=24.3
+  - plyfile=1.1
+  - scipy=1.14
+  - screeninfo=0.8
+  - tqdm=4.67
+
   - pip:
-    - submodules/diff-gaussian-rasterization
-    - submodules/simple-knn
+      - submodules/diff-gaussian-rasterization
+      - submodules/simple-knn
+
+      - submodules/PLAS
+
+      # later imagecodecs version produce much larger JPEG XL files
+      - imagecodecs[all]==2023.9.18
+
+      - wandb==0.18.7
