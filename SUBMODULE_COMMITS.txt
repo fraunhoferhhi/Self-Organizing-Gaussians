@@ -1,0 +1,5 @@
+﻿Submodule commits before vendoring:
+ 4ae964a267cd7a844d9766563cf9d0b500131a22 SIBR_viewers (0.9.6-142-g4ae964a)
+ 782a3ae8adf5223ece31aa4ea97fc5e66931180a submodules/PLAS (remotes/origin/pip)
+ 59f5f77e3ddbac3ed9db93ec2cfe99ed6c5d121d submodules/diff-gaussian-rasterization (heads/main)
+ 44f764299fa305faf6ec5ebd99939e0508331503 submodules/simple-knn (44f7642)
